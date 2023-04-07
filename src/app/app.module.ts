@@ -31,6 +31,7 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { AngularYandexMapsModule, YaConfig } from 'angular8-yandex-maps';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
 
 registerLocaleData(ru);
 
@@ -71,7 +72,8 @@ const mapConfig: YaConfig = {
     NzCarouselModule,
     NzBreadCrumbModule,
     NzAvatarModule,
-    AngularYandexMapsModule
+    AngularYandexMapsModule,
+    NzStepsModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

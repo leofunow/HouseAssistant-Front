@@ -32,14 +32,19 @@
         </div>
 
     </div>
-    <div class="map" nz-col nzXs="24" nzSm="24" nzMd="16">
+
+
+
+    <div class="map" nz-col nzXs="24" nzSm="24" [nzMd]="{span:16}">
         <ya-map style="height: 300px;" [state]="{'controls':[]}" [center]="coords" [zoom]="12">
             <ya-placemark [geometry]="coords">
 
             </ya-placemark>
         </ya-map>
     </div>
-    <div nz-col nzXs="24" nzSm="24" nzMd="8">
+
+
+    <div nz-col nzXs="24" nzSm="24" [nzMd]="{span:8}">
         <h5 nz-typography>Документы по объекту:</h5>
         <div class="document">
             <span nz-icon nzType="book" nzTheme="outline"></span>
@@ -60,6 +65,55 @@
         <br>
         <div class="document">Посмотреть все документы</div>
     </div>
+
+    <div nz-col nzXs="24" nzSm="24" [nzMd]="16">
+        <h4 nz-typography>Описание:</h4>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime laboriosam aspernatur esse consequatur omnis
+        expedita, pariatur dolores saepe itaque tempore quia impedit molestias deleniti obcaecati optio excepturi unde
+        ipsum dolorum?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime laboriosam aspernatur esse consequatur omnis
+        expedita, pariatur dolores saepe itaque tempore quia impedit molestias deleniti obcaecati optio excepturi unde
+        ipsum dolorum?
+    </div>
     <div nz-col nzXs="24">
+        <h4 nz-typography>Дорожная карта:</h4>
+        <nz-steps nzType="navigation" [nzCurrent]="curStep" (nzIndexChange)="onIndexChange($event)">
+            <nz-step nzTitle="Большое название э..." nzStatus="finish"></nz-step>
+            <nz-step nzTitle="Step 2" nzStatus="process"></nz-step>
+            <nz-step nzTitle="Step 3" nzStatus="wait"></nz-step>
+            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
+            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
+            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
+            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
+            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
+            <nz-step nzTitle="Большое название э..." nzStatus="wait"></nz-step>
+        </nz-steps>
+    </div>
+    <div nz-col nzXs="24">
+        <h4 nz-typography><nz-badge nzStatus="processing"></nz-badge>Название этапа</h4>
+        <p>Описание этапа, что сделано, что требуется сделать, что ожидать от этапа и тд
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi dolore perspiciatis dicta voluptatem, esse
+            ducimus totam ullam quam recusandae quis ex officiis blanditiis repellendus exercitationem itaque tempora,
+            accusamus architecto eius?
+        </p>
+        <div class="step-dates">
+            <span nz-icon nzType="calendar" nzTheme="outline"></span>
+            <span class="step-dates-span">29.04.2023 - 15.06.2023</span>
+        </div> <br>
+        <h5 nz-typography>Документы по этапу:</h5>
+        <div class="document">
+            <span nz-icon nzType="book" nzTheme="outline"></span>
+            <span class="document-span">Акт приемки</span>
+        </div>
+        <div class="document">
+            <span nz-icon nzType="book" nzTheme="outline"></span>
+            <span class="document-span">Акт приемки</span>
+        </div> <br>
+        <h5 nz-typography>Фотоотчёт:</h5>
+        <nz-carousel class="photo-carousel">
+            <div nz-carousel-content *ngFor="let index of [1,2,3]">
+                <!-- <h3>{{ index }}</h3> -->
+            </div>
+        </nz-carousel>
     </div>
 </nz-row>

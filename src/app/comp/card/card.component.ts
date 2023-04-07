@@ -11,9 +11,15 @@ import { firstValueFrom } from 'rxjs';
     '../../../../node_modules/remixicon/fonts/remixicon.css',
   ],
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
 
   coords: number[] = []
+
+  curStep = 0
+
+  onIndexChange(event: number){
+    this.curStep = event
+  }
 
   constructor(private http: HttpClient) {
     var sub = http.get('https://geocode-maps.yandex.ru/1.x?geocode='+ 'Москва улица академика анохина 13'
@@ -24,5 +30,8 @@ export class CardComponent {
         sub.unsubscribe();
       }
     )
+  }
+  ngOnInit(): void {
+  
   }
 }

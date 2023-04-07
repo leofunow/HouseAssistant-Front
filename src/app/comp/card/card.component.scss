@@ -1,6 +1,6 @@
-// .photo-carousel{
-//     max-width: 500px;
-// }
+.photo-carousel{
+    max-height: 400px;
+}
 [nz-carousel-content] {
   text-align: center;
   height: 400px;
@@ -27,6 +27,13 @@ nz-tag {
 .user:hover .user-span{
     color: #1890ff;
 }
+.user nz-avatar{
+    outline: 1px solid transparent;
+    transition: 0.1s ease-in-out;
+}
+.user:hover nz-avatar{
+    outline: 2px solid #1890ff;
+}
 .adress-info-wrap{
     height: 100%;
     align-self: center;
@@ -47,5 +54,18 @@ nz-tag {
 }
 
 .map {
-    min-height: 300px;
+    min-height: 250px;
+}
+
+nz-steps{
+    overflow-x: scroll;
+}
+
+nz-step{
+    min-width: 200px;
+    margin-left: 16px;
+}
+
+.step-dates-span{
+    margin-left: 6px;
 }
