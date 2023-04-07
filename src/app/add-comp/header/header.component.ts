@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  isLoggedIn = false;
+  isUserLoggedIn = false;
+  isCollapsed = false;
+
+  collapseMenu() {
+    this.isCollapsed = !this.isCollapsed;
+  }
+
+  btnClick() {
+    this.isCollapsed = true;
+  }
 
 }
