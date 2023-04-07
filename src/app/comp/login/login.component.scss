@@ -1,0 +1,32 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    margin-top: 40px;
+}
+
+.main-admin{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.admin-card{
+  margin: max(calc(40vh - 260px), 32px) auto;
+}
+
+.form-admin{
+  width: 300px;
+}
+
+  
+  button{
+    margin: auto;
+  }
+  
+  @media (max-width: 575px) {
+    .admin-card{
+      margin: max(calc(50vh - 310px), 32px) auto;
+    }
+  }
+  

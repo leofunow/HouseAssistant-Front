@@ -1,0 +1,28 @@
+.contacts-wrap{
+    display: flex;
+}
+
+.info{
+    text-align: center;
+    color: rgba($color: #000000, $alpha: 0.45);
+}
+
+.contacts{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+}
+
+.contacts td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #4F4F4F;
+}
+
+.contact-text{
+    padding-left: 10px;
+}
+
+.footer-wrap{
+    padding: 24px 0;
+}

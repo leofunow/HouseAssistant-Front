@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="logo">
+    <img src="assets/icons/logo.svg" class="logo-img">
+</div>
+
+
+<div class="main-admin">
+    <nz-card class="admin-card">
+      <form
+        nz-form
+       
+      >
+        <nz-form-item>
+          <nz-form-label nzRequired [nzSm]="6" [nzXs]="24">
+            <span>Логин</span>
+          </nz-form-label>
+          <nz-form-control nzErrorTip="Пожалуйста введите логин">
+            <input nz-input type="text" id="login" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired [nzSm]="6" [nzXs]="24">
+            <span>Пароль</span>
+          </nz-form-label>
+          <nz-form-control nzErrorTip="Пожалуйста введите пароль">
+            <input type="password" nz-input id="password"  />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item style="margin-bottom: 0;">
+          <nz-form-control>
+            <button
+              nz-button
+              nzType="primary"
+              nzBlock
+              style="margin-bottom: 8px;"
+            >
+              Войти
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+        Нет аккаунта? <a routerLink="/register">Зарегистрироваться</a>
+      </form>
+    </nz-card>
+  </div>
+  
