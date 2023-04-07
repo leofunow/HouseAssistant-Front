@@ -24,6 +24,10 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
 
 registerLocaleData(ru);
 
@@ -50,7 +54,10 @@ registerLocaleData(ru);
     NzCardModule,
     NzBadgeModule,
     NzTagModule,
-    NzDrawerModule
+    NzDrawerModule,
+    NzMenuModule,
+    NzInputModule,
+    NzIconModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

@@ -1,0 +1,121 @@
+.header {
+    display: flex;
+    max-width: 100vw;
+    margin-bottom: 32px;
+}
+.nav {
+    background-color: white;
+    width: 100%;
+    // border-bottom: 1px solid #f0f0f0;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 64px;
+    z-index: 10;
+  }
+
+  .menu-vertical-wrap {
+    border-left: 1px #f0f0f0 solid;
+    overflow-x: hidden;
+    margin-top: 64px;
+    height: calc(100vh - 64px);
+    max-width: 100%;
+    width: 200px;
+    right: 0;
+    position: fixed;
+    background-color: white;
+    transition: 0.4s ease-in-out;
+    display: none;
+    top: 0;
+  }
+  
+  .burger-menu-btn {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 64px;
+    height: 64px;
+    z-index: 1;
+  }
+
+  .logo_wrap {
+    //padding-top: 6px;
+    display: flex;
+    cursor: pointer;
+  }
+
+  .tabs_wrap {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+  }
+
+  .tabs_wrap > button {
+    margin-left: 12px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .input {
+    width: 50%;
+    height: 32px; 
+  }
+
+  @media (max-width: 700px) {
+    .header {
+        height: 80px;
+    }
+    .nav{
+        flex-direction: column;
+        padding: 0 8px;
+        width: 100%;
+    }
+    .logo_wrap {
+      padding-top: 8px;
+    }
+    .tabs_wrap {
+      display: none;
+    }
+    .input{
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .tabs_wrap > button,
+    .phone_image {
+      display: none;
+    }
+    .burger-menu-btn {
+      display: block;
+    }
+    .menu-vertical-wrap {
+      display: block;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .menu-vertical-wrap {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+  .input{
+    position: relative;
+    padding-right: 6px;
+    overflow: visible;
+}
+
+.collapsed {
+    border: none;
+    width: 0;
+    transition: 0.4s ease-in-out;
+  }

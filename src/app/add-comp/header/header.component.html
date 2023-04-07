@@ -1,1 +1,77 @@
-<p>header works!</p>
+<div class="header">
+  <div class="nav">
+    <div class="logo_wrap">
+      <img
+        src="assets/icons/logo.svg"
+        style="height: 48px; margin-top: auto; margin-bottom: auto"
+        [routerLink]="['']"
+      />
+      <!--    <img *ngIf="!isLoggedIn" class="phone_image" src="assets/icons/Phone.svg" alt="" style="object-fit: fill; height: 32px; margin-bottom: auto; margin-top: auto; margin-left: 24px">-->
+    </div>
+    <div class="input">
+      <nz-input-group
+        [nzSuffix]="suffixIconSearch"
+        style="height: 32px; margin-top: 16px"
+      >
+        <input type="text" nz-input placeholder="Введите название проекта" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </div>
+    <div class="tabs_wrap">
+      <ul
+        nz-menu
+        nzMode="horizontal"
+        style="background-color: transparent; height: 64px"
+      >
+        <li
+          nz-menu-item
+          [nzMatchRouter]="true"
+          [nzMatchRouterExact]="true"
+          style="height: 64px; line-height: 64px"
+        >
+          <a [routerLink]="['']" style="">Главная</a>
+        </li>
+        <li
+          nz-menu-item
+          [nzMatchRouter]="true"
+          [nzMatchRouterExact]="true"
+          style="height: 64px; line-height: 64px"
+        >
+          <a [routerLink]="['lk']" style="">Личный кабинет</a>
+        </li>
+      </ul>
+    </div>
+
+    <button
+      nz-button
+      nzType="text"
+      class="burger-menu-btn"
+      nzBlock
+      (click)="collapseMenu()"
+    >
+      <i nz-icon nzType="menu" nzTheme="outline"></i>
+    </button>
+    <div class="menu-vertical-wrap" [class.collapsed]="isCollapsed">
+      <ul nz-menu nzMode="inline" class="menu-vertical">
+        <li
+          nz-menu-item
+          [nzMatchRouter]="true"
+          [nzMatchRouterExact]="true"
+          style="height: 64px; line-height: 64px"
+        >
+          <a [routerLink]="['']">Главная</a>
+        </li>
+        <li
+          nz-menu-item
+          [nzMatchRouter]="true"
+          [nzMatchRouterExact]="true"
+          style="height: 64px; line-height: 64px"
+        >
+          <a [routerLink]="['profile']" style="">Личный кабинет</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
