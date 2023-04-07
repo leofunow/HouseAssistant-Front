@@ -16,6 +16,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 registerLocaleData(ru);
 
@@ -34,7 +42,15 @@ registerLocaleData(ru);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzButtonModule
+    NzButtonModule,
+    NzTypographyModule,
+    NzLayoutModule,
+    NzIconModule,
+    NzGridModule,
+    NzCardModule,
+    NzBadgeModule,
+    NzTagModule,
+    NzDrawerModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

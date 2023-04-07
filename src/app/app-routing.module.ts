@@ -8,7 +8,7 @@ const routes: Routes = [
     path: "", component: IndexComponent
   },
   {
-    path: "card", component: CardComponent
+    path: "card/:id", component: CardComponent
   }
 ];
 

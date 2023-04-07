@@ -1,0 +1,18 @@
+.registry-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filters-wrap > button{
+    margin-left: 6px;
+    margin-bottom: 12px;
+}
+.address-text{
+    color: #1890ff;
+}
+@media (max-width: 500px) {
+    .filter-text{
+        display: none;
+    }
+    
+}
