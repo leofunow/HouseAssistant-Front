@@ -1,1 +1,54 @@
-<p>card works!</p>
+<nz-breadcrumb>
+    <nz-breadcrumb-item>
+        <a routerLink="/">Объекты</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+        <a routerLink="/catalog">Информация</a>
+    </nz-breadcrumb-item>
+</nz-breadcrumb>
+<br>
+<nz-row [nzGutter]="[16,16]">
+    <div nz-col nzXs="24" nzSm="24" nzMd="16">
+        <nz-carousel class="photo-carousel">
+            <div nz-carousel-content *ngFor="let index of [1,2,3]">
+                <h3>{{ index }}</h3>
+            </div>
+        </nz-carousel>
+    </div>
+    <div class="adress-info-wrap" nz-col nzXs="24" nzSm="24" nzMd="8">
+        <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> ул. Академика Анохина, 17</p>
+        <nz-badge nzStatus="processing" nzText="Урегулирование"></nz-badge> <br><br>
+        <nz-tag [nzColor]="'geekblue'">Снос</nz-tag>
+        <nz-tag [nzColor]="'cyan'">1000 м&#178;</nz-tag>
+        <nz-tag [nzColor]="'volcano'">ЮЗАО</nz-tag>
+        <nz-tag [nzColor]="'green'">Тропарево-Никулино</nz-tag> <br> <br>
+        <h5 nz-typography>Владелец:</h5>
+        <div class="user">
+            <nz-avatar nzIcon="user"></nz-avatar> <span class="user-span">Петров Петр Петрович</span>
+        </div>
+        <br>
+        <h5 nz-typography>Ответственные:</h5>
+        <div class="user"><nz-avatar nzIcon="user"></nz-avatar> <span class="user-span">Иванов Иван Иванович</span>
+        </div>
+
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="16">
+        <h5 nz-typography>Документы по объекту:</h5>
+        <div class="document">
+            <span nz-icon nzType="book" nzTheme="outline"></span>
+            <span class="document-span">Акт приемки</span>
+        </div>
+        <div class="document">
+            <span nz-icon nzType="book" nzTheme="outline"></span>
+            <span class="document-span">Акт приемки</span>
+        </div>
+        <div class="document">
+            <span nz-icon nzType="book" nzTheme="outline"></span>
+            <span class="document-span">Акт приемки</span>
+        </div>
+        <div class="document">
+            <span nz-icon nzType="book" nzTheme="outline"></span>
+            <span class="document-span">Акт приемки</span>
+        </div>
+    </div>
+</nz-row>

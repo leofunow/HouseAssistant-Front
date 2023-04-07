@@ -26,7 +26,10 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzInputModule } from 'ng-zorro-antd/input';
-
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 registerLocaleData(ru);
 
@@ -56,7 +59,11 @@ registerLocaleData(ru);
     NzDrawerModule,
     NzMenuModule,
     NzInputModule,
-    NzIconModule
+    NzIconModule,
+    NzSelectModule,
+    NzCarouselModule,
+    NzBreadCrumbModule,
+    NzAvatarModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

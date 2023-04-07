@@ -1,0 +1,47 @@
+// .photo-carousel{
+//     max-width: 500px;
+// }
+[nz-carousel-content] {
+  text-align: center;
+  height: 400px;
+  line-height: 400px;
+  background: #364d79;
+  color: #fff;
+  overflow: hidden;
+}
+.address-text {
+  color: #1890ff;
+  cursor: pointer;
+}
+nz-tag {
+    margin-bottom: 6px;
+}
+
+.user{
+    cursor: pointer;
+}
+.user-span{
+    margin-left: 6px;
+    transition: 0.1s ease-in-out;
+}
+.user:hover .user-span{
+    color: #1890ff;
+}
+.adress-info-wrap{
+    height: 100%;
+    align-self: center;
+}
+.document{
+    color: gray;
+    font-size: 16px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+.document:hover{
+    color: #1890ff
+}
+.document-span{
+    margin-left: 6px;
+    cursor: pointer;
+}
