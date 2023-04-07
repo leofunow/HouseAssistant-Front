@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   isLoggedIn = false;
   isUserLoggedIn = false;
-  isCollapsed = false;
+  isCollapsed = true;
 
   collapseMenu() {
     this.isCollapsed = !this.isCollapsed;

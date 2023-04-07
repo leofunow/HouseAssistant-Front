@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'HouseAssistant-Front';
+  showheader = true;
+
+  showHeader () {
+    return window.location.href.indexOf('/login') === -1;
+  }
 }
