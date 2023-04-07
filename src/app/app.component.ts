@@ -10,6 +10,8 @@ export class AppComponent {
   showheader = true;
 
   showHeader () {
-    return window.location.href.indexOf('/login') === -1;
-  }
+    if (window.location.href.indexOf('/login')!=-1 || window.location.href.indexOf('/register')!=-1) {
+      return false;
+  } else return true;
+ }
 }
