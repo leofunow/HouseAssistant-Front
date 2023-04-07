@@ -26,7 +26,6 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 
 
 registerLocaleData(ru);
