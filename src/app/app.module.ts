@@ -30,8 +30,15 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { AngularYandexMapsModule, YaConfig } from 'angular8-yandex-maps';
 
 registerLocaleData(ru);
+
+const mapConfig: YaConfig = {
+  apikey: '81dcd694-7601-4387-bd05-996e3e78db3d',
+  lang: 'ru_RU'
+  // coordorder: 'longlat',
+};
 
 @NgModule({
   declarations: [
@@ -63,7 +70,8 @@ registerLocaleData(ru);
     NzSelectModule,
     NzCarouselModule,
     NzBreadCrumbModule,
-    NzAvatarModule
+    NzAvatarModule,
+    AngularYandexMapsModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

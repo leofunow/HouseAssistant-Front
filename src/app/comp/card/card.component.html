@@ -7,7 +7,7 @@
     </nz-breadcrumb-item>
 </nz-breadcrumb>
 <br>
-<nz-row [nzGutter]="[16,16]">
+<nz-row [nzGutter]="[24,24]">
     <div nz-col nzXs="24" nzSm="24" nzMd="16">
         <nz-carousel class="photo-carousel">
             <div nz-carousel-content *ngFor="let index of [1,2,3]">
@@ -32,7 +32,14 @@
         </div>
 
     </div>
-    <div nz-col nzXs="24" nzSm="24" nzMd="16">
+    <div class="map" nz-col nzXs="24" nzSm="24" nzMd="16">
+        <ya-map style="height: 300px;" [state]="{'controls':[]}" [center]="coords" [zoom]="12">
+            <ya-placemark [geometry]="coords">
+
+            </ya-placemark>
+        </ya-map>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="8">
         <h5 nz-typography>Документы по объекту:</h5>
         <div class="document">
             <span nz-icon nzType="book" nzTheme="outline"></span>
@@ -50,5 +57,9 @@
             <span nz-icon nzType="book" nzTheme="outline"></span>
             <span class="document-span">Акт приемки</span>
         </div>
+        <br>
+        <div class="document">Посмотреть все документы</div>
+    </div>
+    <div nz-col nzXs="24">
     </div>
 </nz-row>
