@@ -42,6 +42,8 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { AddCardComponent } from './comp/add-card/add-card.component';
+
 
 registerLocaleData(ru);
 
@@ -60,7 +62,8 @@ const mapConfig: YaConfig = {
     LoginComponent,
     CardComponent,
     RegisterComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    AddCardComponent
   ],
   imports: [
     BrowserModule,
@@ -93,6 +96,8 @@ const mapConfig: YaConfig = {
     NzCheckboxModule,
     NzCollapseModule,
     NzSliderModule,
+    NzInputNumberModule,
+    NzSelectModule,
     NzInputNumberModule
   ],
   providers: [
