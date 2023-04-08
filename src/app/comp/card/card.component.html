@@ -1,11 +1,14 @@
-<nz-breadcrumb>
-    <nz-breadcrumb-item>
-        <a routerLink="/">Объекты</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>
-        <a routerLink="/catalog">Информация</a>
-    </nz-breadcrumb-item>
-</nz-breadcrumb>
+<div class="brearcrumb-wrap">
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a routerLink="/">Объекты</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>Информация</a>
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <button nz-button nzType="link">Редактировать</button>
+</div>
 <br>
 <nz-row [nzGutter]="[24,24]">
     <div nz-col nzXs="24" nzSm="24" nzMd="16">
@@ -22,12 +25,12 @@
         <nz-tag [nzColor]="'cyan'">1000 м&#178;</nz-tag>
         <nz-tag [nzColor]="'volcano'">ЮЗАО</nz-tag>
         <nz-tag [nzColor]="'green'">Тропарево-Никулино</nz-tag> <br> <br>
-        <h5 nz-typography>Владелец:</h5>
-        <div class="user">
+        <h4 nz-typography>Владелец:</h4>
+        <div class="user" routerLink="user/0">
             <nz-avatar nzIcon="user"></nz-avatar> <span class="user-span">Петров Петр Петрович</span>
         </div>
         <br>
-        <h5 nz-typography>Ответственные:</h5>
+        <h4 nz-typography>Ответственные:</h4>
         <div class="user"><nz-avatar nzIcon="user"></nz-avatar> <span class="user-span">Иванов Иван Иванович</span>
         </div>
 
@@ -45,7 +48,7 @@
 
 
     <div nz-col nzXs="24" nzSm="24" [nzMd]="{span:8}">
-        <h5 nz-typography>Документы по объекту:</h5>
+        <h4 nz-typography>Документы по объекту:</h4>
         <div class="document">
             <span nz-icon nzType="book" nzTheme="outline"></span>
             <span class="document-span">Акт приемки</span>
@@ -63,7 +66,7 @@
             <span class="document-span">Акт приемки</span>
         </div>
         <br>
-        <div class="document">Посмотреть все документы</div>
+        <div class="document">Посмотреть все документы</div> <br>
     </div>
 
     <div nz-col nzXs="24" nzSm="24" [nzMd]="16">
@@ -106,8 +109,8 @@
             <span class="document-span">Акт приемки</span>
         </div>
         <div class="document">
-            <span nz-icon nzType="book" nzTheme="outline"></span>
-            <span class="document-span">Акт приемки</span>
+            <span nz-icon nzType="video-camera" nzTheme="outline"></span>
+            <span class="document-span">Пример видео</span>
         </div> <br>
         <h5 nz-typography>Фотоотчёт:</h5>
         <nz-carousel class="photo-carousel">
@@ -117,3 +120,6 @@
         </nz-carousel>
     </div>
 </nz-row>
+<footer>
+    <app-footer></app-footer>
+</footer>

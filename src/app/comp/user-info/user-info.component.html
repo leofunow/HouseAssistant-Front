@@ -1,0 +1,59 @@
+<div class="brearcrumb-wrap">
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a routerLink="/">Объекты</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item *ngIf="card_id">
+            <a [routerLink]="'/card/' + card_id">Информация</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>Пользователь</a>
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <!-- <button nz-button nzType="link">Редактировать</button> -->
+</div>
+<br>
+<br>
+<nz-row [nzGutter]="[24,24]" class="user-info-wrap">
+    <div nz-col class="avatar-wrap"><nz-avatar nzIcon="user" [nzSize]="256" nzShape="square"></nz-avatar></div>
+    <div nz-col  nzXs="24" nzMd="12" nzLg="16"> 
+        <h3 nz-typography>Петров Петр Петрович</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem cumque dolor vel, assumenda necessitatibus natus aliquam error atque maxime! Cum odit quod temporibus distinctio odio iusto fugiat aut, laborum deserunt?
+            <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusamus culpa exercitationem in provident aut asperiores! Unde, illum. Dignissimos amet dolorum non dicta ex facere sequi aliquid ipsum reiciendis fuga!
+        </p>
+    </div>
+    <div nz-col nzSpan="24">
+        <h4 nz-typography>Контакты для связи</h4>
+        <div class="contact">
+            <span nz-icon nzType="mail" nzTheme="outline"></span>
+            <span class="contact-span">example@example.com</span>
+        </div>
+        <div class="contact">
+            <span nz-icon nzType="phone" nzTheme="outline"></span>
+            <span class="contact-span">8 (800) 555 35 35</span>
+        </div> <br> <br>
+        <h4 nz-typography>Проекты пользователя</h4>
+        <div class="cards-wrap" nz-row [nzGutter]="[16,16]">
+            <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="6" *ngFor="let a of ['1','2','3','4','5','6']">
+                <nz-card nzHoverable [nzCover]="coverTemplate" [routerLink]="'/card/' + a">
+                    <div class="card-content">
+                        <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> ул. Академика Анохина, 17</p>
+                        <nz-badge nzStatus="processing" nzText="Урегулирование"></nz-badge> <br><br>
+                        <nz-tag [nzColor]="'geekblue'">Снос</nz-tag>
+                        <nz-tag [nzColor]="'cyan'">1000 м&#178;</nz-tag>
+                        <nz-tag [nzColor]="'volcano'">ЮЗАО</nz-tag>
+                    </div>
+                </nz-card>
+                <!-- templates for card -->
+                <ng-template #coverTemplate>
+                    <img src="https://inde.io/i/posts/18861/f8039ac96a9de535f4579523d32eac5b.jpg" />
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</nz-row>
+
+<footer>
+    <app-footer></app-footer>
+</footer>

@@ -4,10 +4,14 @@ import { CardComponent } from './comp/card/card.component';
 import { IndexComponent } from './comp/index/index.component';
 import { LoginComponent } from './comp/login/login.component';
 import { RegisterComponent } from './comp/register/register.component';
+import { UserInfoComponent } from './comp/user-info/user-info.component';
 
 const routes: Routes = [
   {
     path: "", component: IndexComponent
+  },
+  {
+    path: "card/:card_id/user/:user_id", component: UserInfoComponent
   },
   {
     path: "card/:id", component: CardComponent
@@ -17,6 +21,12 @@ const routes: Routes = [
   },
   {
     path: "register", component: RegisterComponent
+  },
+  {
+    path: "user/:id", component: UserInfoComponent
+  },
+  {
+    path: "**", component: IndexComponent
   }
 ];
 

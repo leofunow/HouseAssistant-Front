@@ -1,6 +1,14 @@
 .photo-carousel{
     max-height: 400px;
 }
+.brearcrumb-wrap{
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+.brearcrumb-wrap > button{
+    margin-left: 12px;
+}
 [nz-carousel-content] {
   text-align: center;
   height: 400px;
@@ -19,6 +27,7 @@ nz-tag {
 
 .user{
     cursor: pointer;
+    width: fit-content;
 }
 .user-span{
     margin-left: 6px;

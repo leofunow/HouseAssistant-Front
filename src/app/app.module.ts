@@ -35,6 +35,9 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { RegisterComponent } from './comp/register/register.component';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzBackTopModule } from 'ng-zorro-antd/back-top';
+import { UserInfoComponent } from './comp/user-info/user-info.component';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 registerLocaleData(ru);
 
@@ -52,7 +55,8 @@ const mapConfig: YaConfig = {
     IndexComponent,
     LoginComponent,
     CardComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,9 @@ const mapConfig: YaConfig = {
     AngularYandexMapsModule,
     NzStepsModule,
     NzFormModule,
-    NzAlertModule
+    NzAlertModule,
+    NzBackTopModule,
+    NzPaginationModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

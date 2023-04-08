@@ -13,6 +13,13 @@
 .sort-select{
     width: 100%;
 }
+.pagination-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
 @media (max-width: 500px) {
     .filter-text{
         display: none;
