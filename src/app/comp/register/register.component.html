@@ -4,19 +4,19 @@
 
 <div style="overflow-x: hidden; max-width:100vw">
     <h2 nz-typography style="text-align: center;margin-bottom: 16px; margin-top: 32px;">Регистрация</h2>
+    <div class="main-card">
     <nz-card class="block-card">
         <form nz-form>
             <nz-form-item>
-                <nz-form-label [nzSm]="8" [nzXs]="24">
-                    <span>Ваша электронная почта</span>
+                <nz-form-label [nzSm]="10" [nzXs]="24">
+                    <span>Электронная почта</span>
                 </nz-form-label>
                 <nz-form-control nzErrorTip="Пожалуйста введите корректную электронную почту">
                     <input nz-input type="text" id="login"  placeholder="email"/>
                 </nz-form-control>
             </nz-form-item>
-
             <nz-form-item>
-                <nz-form-label [nzSm]="8" [nzXs]="24">
+                <nz-form-label [nzSm]="10" [nzXs]="24">
                     <span>Пароль</span>
                 </nz-form-label>
                 <nz-form-control nzErrorTip="Пожалуйста введите пароль">
@@ -25,7 +25,7 @@
             </nz-form-item>
 
             <nz-form-item>
-                <nz-form-label [nzSm]="8" [nzXs]="24">
+                <nz-form-label [nzSm]="10" [nzXs]="24">
                     <span>Повторите пароль</span>
                 </nz-form-label>
                 <nz-form-control nzErrorTip="Пароли должны совпадать">
@@ -34,7 +34,7 @@
             </nz-form-item>
 
             <nz-form-item>
-                <nz-form-label [nzSm]="8" [nzXs]="24">
+                <nz-form-label [nzSm]="10" [nzXs]="24">
                     <span>Имя</span>
                 </nz-form-label>
                 <nz-form-control nzErrorTip="Пожалуйста введите имя">
@@ -43,7 +43,7 @@
             </nz-form-item>
 
             <nz-form-item>
-                <nz-form-label [nzSm]="8" [nzXs]="24">
+                <nz-form-label [nzSm]="10" [nzXs]="24">
                     <span>Фамилия</span>
                 </nz-form-label>
                 <nz-form-control nzErrorTip="Пожалуйста введите фамилию">
@@ -51,7 +51,7 @@
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-                <nz-form-label [nzSm]="8" [nzXs]="24">
+                <nz-form-label [nzSm]="10" [nzXs]="24">
                     <span>Номер телефона</span>
                 </nz-form-label>
                 <nz-form-control nzErrorTip="Пожалуйста введите корректный номер телефона">
@@ -59,14 +59,14 @@
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item style="margin-bottom: 0;">
-                <nz-form-control [nzSm]="{span:8, offset: 8}" [nzXs]="{span:8, offset: 0}">
+                <nz-form-control [nzSm]="{span:14, offset: 5}" [nzXs]="{span:8, offset: 0}">
                     <button
                         type="submit"
                         nz-button
                         nzType="primary"
                         nzBlock
                         nzSize="large"
-                        style="margin-bottom: 8px;"
+                        style="margin-bottom: 0px;"
                         >
                         Зарегистрироваться
                     </button>
@@ -75,4 +75,5 @@
 
         </form>
     </nz-card>
+</div>
 </div>

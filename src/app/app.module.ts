@@ -47,6 +47,11 @@ import { DocsComponent } from './comp/docs/docs.component';
 import { ProfileComponent } from './comp/profile/profile.component';
 import { CardsComponent } from './add-comp/cards/cards.component';
 
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 
 registerLocaleData(ru);
@@ -105,7 +110,12 @@ const mapConfig: YaConfig = {
     NzSliderModule,
     NzInputNumberModule,
     NzSelectModule,
-    NzInputNumberModule
+    NzInputNumberModule,
+    NzUploadModule,
+    NzModalModule,
+    NzImageModule,
+    NzMessageModule,
+    NzDatePickerModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }
