@@ -263,7 +263,7 @@
         </nz-steps>
 
         <div nz-row [nzGutter]="[8,0]" style="margin-top: 24px;">
-        <div nz-col nzXs="24" nzSm="16" nzMd="12" nzLg="11">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="11">
             <nz-form-item>
               <nz-form-label>
                 <span>Название этапа</span>
@@ -278,7 +278,7 @@
               </nz-form-control>
             </nz-form-item>
           </div>
-          <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="7">
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="7">
             <nz-form-item>
               <nz-form-label>
                 <span>Отвественный</span>
@@ -307,7 +307,7 @@
               </nz-form-control>
             </nz-form-item>
           </div>
-          <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="6">
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
           <nz-form-item>
             <nz-form-label>
               <span>Статус этапа</span>
@@ -336,17 +336,17 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="8">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
             <nz-form-item>
               <nz-form-label>
-                <span>Плановая дата окончания этапа</span>
+                <span>Дата окончания этапа</span>
               </nz-form-label>
               <nz-form-control nzErrorTip="Пожалуйста введите дату окончания этапа">
                 <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
               </nz-form-control>
             </nz-form-item>
           </div>
-          <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="16">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="16">
             <nz-form-item>
               <nz-form-label>
                 <span>Описание этапа</span>
@@ -429,3 +429,4 @@
     </form>
   </nz-card>
 </div>
+<app-footer></app-footer>

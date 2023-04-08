@@ -8,3 +8,12 @@
 .block-card{
     margin: 0 auto;
 }
+
+nz-steps{
+    overflow-x: scroll;
+}
+
+nz-step{
+    min-width: 200px;
+    margin-left: 16px;
+}
