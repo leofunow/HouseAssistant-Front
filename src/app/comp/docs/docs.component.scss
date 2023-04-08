@@ -1,0 +1,20 @@
+.address-text {
+  color: #1890ff;
+  cursor: pointer;
+}
+
+.document {
+  color: gray;
+  font-size: 16px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  
+}
+.document:hover {
+  color: #1890ff;
+}
+.document-span {
+  margin-left: 6px;
+  cursor: pointer;
+}

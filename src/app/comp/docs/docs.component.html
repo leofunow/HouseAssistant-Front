@@ -1,0 +1,54 @@
+<div class="brearcrumb-wrap">
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a routerLink="/">Объекты</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item *ngIf="card_id">
+            <a [routerLink]="'/card/' + card_id">Информация</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>Документы</a>
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <!-- <button nz-button nzType="link">Редактировать</button> -->
+</div>
+<br>
+<br>
+<h3>Документы по объекту на <span class="address-text" nz-typography [routerLink]="'/card/' + card_id"><i
+            class="ri-map-pin-line"></i> ул. Академика Анохина, 17</span></h3>
+<div class="document">
+    <span nz-icon nzType="book" nzTheme="outline"></span>
+    <span class="document-span">Акт приемки</span>
+</div>
+<div class="document">
+    <span nz-icon nzType="book" nzTheme="outline"></span>
+    <span class="document-span">Акт приемки</span>
+</div>
+<div class="document">
+    <span nz-icon nzType="book" nzTheme="outline"></span>
+    <span class="document-span">Акт приемки</span>
+</div>
+<div class="document">
+    <span nz-icon nzType="book" nzTheme="outline"></span>
+    <span class="document-span">Акт приемки</span>
+</div>
+<div class="document">
+    <span nz-icon nzType="book" nzTheme="outline"></span>
+    <span class="document-span">Акт приемки</span>
+</div>
+<div class="document">
+    <span nz-icon nzType="book" nzTheme="outline"></span>
+    <span class="document-span">Акт приемки</span>
+</div>
+<div class="document">
+    <span nz-icon nzType="book" nzTheme="outline"></span>
+    <span class="document-span">Акт приемки</span>
+</div>
+<div class="document">
+    <span nz-icon nzType="book" nzTheme="outline"></span>
+    <span class="document-span">Акт приемки</span>
+</div>
+<div class="document">
+    <span nz-icon nzType="book" nzTheme="outline"></span>
+    <span class="document-span">Акт приемки</span>
+</div>

@@ -12,11 +12,6 @@ export class IndexComponent {
 
   area = [0, 5000];
 
-
-  selectCard(id: string) {
-    window.location.href = `/card/${id}`
-  }
-
   openFilters() {
     this.isFiltersOpened = true
   }

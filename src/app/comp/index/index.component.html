@@ -11,7 +11,7 @@
 
 <div class="cards-wrap" nz-row [nzGutter]="[16,16]">
     <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="6" *ngFor="let a of ['1','2','3','4','5','6']">
-        <nz-card nzHoverable [nzCover]="coverTemplate" (click)="selectCard(a)">
+        <nz-card nzHoverable [nzCover]="coverTemplate" [routerLink]="'/card/' + a">
             <div class="card-content">
                 <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> ул. Академика Анохина, 17</p>
                 <nz-badge nzStatus="processing" nzText="Урегулирование"></nz-badge> <br><br>
@@ -28,7 +28,7 @@
 </div>
 
 <div class="pagination-wrap">
-    <nz-pagination [nzPageIndex]="1" [nzTotal]="500"></nz-pagination>
+    <nz-pagination [nzPageIndex]="1" [nzTotal]="500" [nzSize]="'small'"></nz-pagination>
 </div>
 
 

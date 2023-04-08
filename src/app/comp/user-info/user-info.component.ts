@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,8 +7,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent {
-
+  @Input()
   id: string | null;
+  @Input()
+  isLk: boolean = false;
   card_id: string | null;
 
   constructor(private route: ActivatedRoute) {

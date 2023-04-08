@@ -1,0 +1,25 @@
+<nz-layout class="layout">
+    <nz-sider [nzWidth]="250" nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" nzTheme="light">
+        <ul nz-menu nzMode="inline">
+            <li nz-menu-item nzSelected (click)="selectedMenu='profile'">
+                <span nz-icon nzType="user"></span>
+                <span>Информация обо мне</span>
+            </li>
+            <li nz-menu-item (click)="selectedMenu='cards'">
+                <span nz-icon nzType="unordered-list" nzTheme="outline"></span>
+
+                <span>Мои объекты</span>
+            </li>
+            <li nz-menu-item (click)="selectedMenu='addCard'">
+                <span nz-icon nzType="plus"></span>
+                <span>Добавить объект</span>
+            </li>
+        </ul>
+    </nz-sider>
+    <nz-content>
+        <div class="content-wrap">
+            <app-user-info id="0" [isLk]="true" *ngIf="selectedMenu == 'profile'"></app-user-info>
+            <app-cards id="1" *ngIf="selectedMenu == 'cards'"></app-cards>
+        </div>
+    </nz-content>
+</nz-layout>

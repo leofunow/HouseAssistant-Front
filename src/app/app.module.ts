@@ -43,6 +43,10 @@ import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { AddCardComponent } from './comp/add-card/add-card.component';
+import { DocsComponent } from './comp/docs/docs.component';
+import { ProfileComponent } from './comp/profile/profile.component';
+import { CardsComponent } from './add-comp/cards/cards.component';
+
 
 
 registerLocaleData(ru);
@@ -63,7 +67,10 @@ const mapConfig: YaConfig = {
     CardComponent,
     RegisterComponent,
     UserInfoComponent,
-    AddCardComponent
+    AddCardComponent,
+    DocsComponent,
+    ProfileComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,

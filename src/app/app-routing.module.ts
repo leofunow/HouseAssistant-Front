@@ -6,6 +6,8 @@ import { LoginComponent } from './comp/login/login.component';
 import { RegisterComponent } from './comp/register/register.component';
 import { UserInfoComponent } from './comp/user-info/user-info.component';
 import { AddCardComponent } from './comp/add-card/add-card.component';
+import { DocsComponent } from './comp/docs/docs.component';
+import { ProfileComponent } from './comp/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,9 @@ const routes: Routes = [
   },
   {
     path: "card/:card_id/user/:user_id", component: UserInfoComponent
+  },
+  {
+    path: "card/:card_id/docs", component: DocsComponent
   },
   {
     path: "card/:id", component: CardComponent
@@ -30,12 +35,15 @@ const routes: Routes = [
     path: "user/:id", component: UserInfoComponent
   },
   {
+    path: "profile", component: ProfileComponent
+  },
+  {
     path: "**", component: IndexComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
