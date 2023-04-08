@@ -4,6 +4,7 @@ import { CardComponent } from './comp/card/card.component';
 import { IndexComponent } from './comp/index/index.component';
 import { LoginComponent } from './comp/login/login.component';
 import { RegisterComponent } from './comp/register/register.component';
+import { AddCardComponent } from './comp/add-card/add-card.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path: "register", component: RegisterComponent
+  },
+  {
+    path: "addCard", component: AddCardComponent
   }
 ];
 

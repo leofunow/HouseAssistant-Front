@@ -29,6 +29,10 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { RegisterComponent } from './comp/register/register.component';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { AddCardComponent } from './comp/add-card/add-card.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+
 
 
 registerLocaleData(ru);
@@ -41,7 +45,8 @@ registerLocaleData(ru);
     IndexComponent,
     LoginComponent,
     CardComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddCardComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +67,9 @@ registerLocaleData(ru);
     NzInputModule,
     NzIconModule,
     NzFormModule,
-    NzAlertModule
+    NzAlertModule,
+    NzSelectModule,
+    NzInputNumberModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

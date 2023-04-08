@@ -1,0 +1,158 @@
+<!-- <div class="logo">
+    <img src="assets/icons/logo.svg" class="logo-img">
+</div> -->
+
+<div style="overflow-x: hidden; ">
+    <h2 nz-typography style="text-align: center;margin-bottom: 16px;">Добавить объект</h2>
+    <nz-card class="block-card">
+        <form nz-form>
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">
+                    <span>Название проекта</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Пожалуйста введите название проекта">
+                    <input nz-input type="text" id="name"  placeholder="Введите Название проекта"/>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">
+                    <span>Округ</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Пожалуйста введите округ">
+                    <nz-select
+      nzMode="tags"
+      [nzMaxTagCount]="1"
+      [nzMaxMultipleCount]="1"
+      [nzMaxTagPlaceholder]="tagPlaceHolder"
+      nzPlaceHolder="Введите округ"
+      id="Field"
+      [(ngModel)]="listOfSelectedFields"
+      nzShowSearch 
+      nzAllowClear
+    >
+    <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+      <nz-option *ngFor="let item of listOfFields" [nzLabel]="item" [nzValue]="item"></nz-option>
+    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">
+                    <span>Район</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Пожалуйста введите район">
+                    <nz-select
+                    nzMode="tags"
+                    [nzMaxTagCount]="1"
+                    [nzMaxMultipleCount]="1"
+                    [nzMaxTagPlaceholder]="tagPlaceHolder2"
+                    nzPlaceHolder="Введите район"
+                    id="district"
+                    [(ngModel)]="listOfSelectedDistricts" 
+                    nzShowSearch 
+                    nzAllowClear
+                  >
+                  <ng-template #tagPlaceHolder2 let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+                    <nz-option *ngFor="let item of listOfDistricts" [nzLabel]="item" [nzValue]="item"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">
+                    <span>Адрес</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Пожалуйста введите адрес">
+                    <input nz-input type="text" id="address"  placeholder="Введите адрес"/>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">
+                    <span>Тип работ</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Пожалуйста введите тип работ">
+                    <nz-select
+                    nzMode="tags"
+                    [nzMaxTagCount]="1"
+                    [nzMaxMultipleCount]="1"
+                    [nzMaxTagPlaceholder]="tagPlaceHolder3"
+                    nzPlaceHolder="Введите тип работ"
+                    id="type"
+                    [(ngModel)]="listOfSelectedTypes" 
+                    nzShowSearch 
+                    nzAllowClear
+                  >
+                  <ng-template #tagPlaceHolder3 let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+                    <nz-option *ngFor="let item of listOfTypes" [nzLabel]="item" [nzValue]="item"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">
+                    <span>Площадь объекта, км<sup><small>2</small></sup></span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Пожалуйста введите площадь объекта">
+                    <nz-input-number [(ngModel)]="space" [nzMin]="1" [nzMax]="10000" [nzStep]="10" id="space"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">
+                    <span>Площадь проекта</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Пожалуйста выберите Отвественных">
+                    <nz-select
+                    nzMode="multiple"
+                    [nzMaxTagCount]="3"
+                    [nzMaxTagPlaceholder]="tagPlaceHolder4"
+                    nzPlaceHolder="Выберите отвественных"
+                    id="responsibles"
+                    [(ngModel)]="listOfSelectedResponsibles" 
+                    nzShowSearch 
+                    nzAllowClear
+                  >
+                  <ng-template #tagPlaceHolder4 let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+                    <nz-option *ngFor="let item of listOfResponsibles" [nzLabel]="item" [nzValue]="item"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">
+                    <span>Статус проекта</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Пожалуйста выберите статус">
+                    <nz-select
+                    nzMode="multiple"
+                    [nzMaxTagCount]="1"
+                    [nzMaxMultipleCount]="1"
+                    [nzMaxTagPlaceholder]="tagPlaceHolder4"
+                    nzPlaceHolder="Выберите статус"
+                    id="status"
+                    [(ngModel)]="listOfSelectedStatus" 
+                    nzShowSearch 
+                    nzAllowClear
+                  >
+                  <ng-template #tagPlaceHolder4 let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+                    <nz-option *ngFor="let item of listOfStatus" [nzLabel]="item" [nzValue]="item"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item style="margin-bottom: 0;">
+                <nz-form-control [nzSm]="{span:8, offset: 8}" [nzXs]="{span:8, offset: 0}">
+                    <button
+                        type="submit"
+                        nz-button
+                        nzType="primary"
+                        nzBlock
+                        nzSize="large"
+                        style="margin-bottom: 8px;"
+                        >
+                        Создать
+                    </button>
+                </nz-form-control>
+            </nz-form-item>
+
+        </form>
+    </nz-card>
+</div>
