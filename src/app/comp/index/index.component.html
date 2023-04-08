@@ -3,8 +3,9 @@
     <div class="filters-wrap">
         <button nz-button (click)="openFilters()"><span nz-icon nzType="filter" nzTheme="outline"></span><span
                 class="filter-text">Фильтры</span></button>
-        <button nz-button (click)="openSorting()" ><span nz-icon nzType="sort-ascending" nzTheme="outline"></span><span
-                class="filter-text">Сортировка</span></button>
+        <!-- <button nz-button (click)="openSorting()" ><span nz-icon nzType="sort-ascending" nzTheme="outline"></span><span
+                class="filter-text">Сортировка</span></button> -->
+                
     </div>
 </div>
 
@@ -15,7 +16,7 @@
                 <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> ул. Академика Анохина, 17</p>
                 <nz-badge nzStatus="processing" nzText="Урегулирование"></nz-badge> <br><br>
                 <nz-tag [nzColor]="'geekblue'">Снос</nz-tag>
-                <nz-tag [nzColor]="'cyan'">1000 м2</nz-tag>
+                <nz-tag [nzColor]="'cyan'">1000 м&#178;</nz-tag>
                 <nz-tag [nzColor]="'volcano'">ЮЗАО</nz-tag>
             </div>
         </nz-card>
@@ -26,10 +27,47 @@
     </div>
 </div>
 
+<div class="pagination-wrap">
+    <nz-pagination [nzPageIndex]="1" [nzTotal]="500"></nz-pagination>
+</div>
 
 
 <nz-drawer [nzVisible]="isFiltersOpened" (nzOnClose)="closeFilters()" nzTitle="Выберите настройки фильтрации">
-
+    <ng-container *nzDrawerContent>
+        <nz-select nzPlaceHolder="Сортировка" class="sort-select">
+            <nz-option *ngFor="let item of ['Дата по возрастанию', 'Дата по убыванию']" [nzLabel]="item" [nzValue]="item"></nz-option>
+            <!-- дата и площадь -->
+        </nz-select>
+        <br>
+        <br>
+        <h4 nz-typography>Фильтрация</h4>
+            <nz-collapse nzGhost>
+                <nz-collapse-panel nzHeader="Cтатус">
+                    <form class="checkboxes">
+                        <label nz-checkbox>Подтверждено</label>
+                        <label nz-checkbox>В работе</label>
+                        <label nz-checkbox>В архиве</label>
+                    </form>
+                </nz-collapse-panel>
+                <nz-collapse-panel nzHeader="Тип">
+                </nz-collapse-panel>
+                <nz-collapse-panel nzHeader="Округ">
+                </nz-collapse-panel>
+                <nz-collapse-panel nzHeader="Район">
+                </nz-collapse-panel>
+                <nz-collapse-panel nzHeader="Площадь, м&#178;">
+                    <nz-slider nzRange nzMax="10000" [(ngModel)]="area"></nz-slider>
+                    <nz-input-number [(ngModel)]="area[0]"></nz-input-number>
+                    <nz-input-number [(ngModel)]="area[1]"></nz-input-number>
+                </nz-collapse-panel>
+            </nz-collapse> <br>
+            <button nz-button>Применить</button>
+    </ng-container>
+    
+    <!-- Статус, округ, район, площадь слайдер от до, тип, дате пикер -->
 </nz-drawer>
 
-<app-footer></app-footer>
+
+<footer>
+    <app-footer></app-footer>
+</footer>

@@ -1,0 +1,80 @@
+.photo-carousel{
+    max-height: 400px;
+}
+.brearcrumb-wrap{
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+.brearcrumb-wrap > button{
+    margin-left: 12px;
+}
+[nz-carousel-content] {
+  text-align: center;
+  height: 400px;
+  line-height: 400px;
+  background: #364d79;
+  color: #fff;
+  overflow: hidden;
+}
+.address-text {
+  color: #1890ff;
+  cursor: pointer;
+}
+nz-tag {
+    margin-bottom: 6px;
+}
+
+.user{
+    cursor: pointer;
+    width: fit-content;
+}
+.user-span{
+    margin-left: 6px;
+    transition: 0.1s ease-in-out;
+}
+.user:hover .user-span{
+    color: #1890ff;
+}
+.user nz-avatar{
+    outline: 1px solid transparent;
+    transition: 0.1s ease-in-out;
+}
+.user:hover nz-avatar{
+    outline: 2px solid #1890ff;
+}
+.adress-info-wrap{
+    height: 100%;
+    align-self: center;
+}
+.document{
+    color: gray;
+    font-size: 16px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+.document:hover{
+    color: #1890ff
+}
+.document-span{
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+.map {
+    min-height: 250px;
+}
+
+nz-steps{
+    overflow-x: scroll;
+}
+
+nz-step{
+    min-width: 200px;
+    margin-left: 16px;
+}
+
+.step-dates-span{
+    margin-left: 6px;
+}

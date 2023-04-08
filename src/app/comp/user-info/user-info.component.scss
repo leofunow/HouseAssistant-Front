@@ -1,0 +1,28 @@
+.brearcrumb-wrap{
+    // display: flex;
+    // align-items: center;
+    margin-top: 17px;
+}
+.user-info-wrap{
+    display: flex;
+    align-items: center;
+}
+nz-avatar {
+    justify-self: center;
+}
+
+.contact {
+    line-height: 32px;
+}
+
+.contact-span{
+    margin-left: 6px;
+}
+
+
+
+@media (max-width: 766px) {
+    .avatar-wrap{
+        margin: 0 auto;
+    }
+}

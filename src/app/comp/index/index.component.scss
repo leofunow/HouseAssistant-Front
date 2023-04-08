@@ -1,18 +1,40 @@
-.registry-wrap{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.registry-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.filters-wrap > button{
-    margin-left: 6px;
-    margin-bottom: 12px;
+.filters-wrap > button {
+  margin-left: 6px;
+  margin-bottom: 12px;
 }
-.address-text{
-    color: #1890ff;
+.address-text {
+  color: #1890ff;
 }
+.sort-select {
+  width: 100%;
+}
+.pagination-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+}
+.checkboxes > * {
+  margin-left: 8px;
+  margin-top: 6px;
+}
+
+nz-slider ~ nz-input-number {
+    width: 50%;
+}
+
 @media (max-width: 500px) {
-    .filter-text{
-        display: none;
-    }
-    
+  .filter-text {
+    display: none;
+  }
 }

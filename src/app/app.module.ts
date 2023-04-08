@@ -26,16 +26,32 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { AngularYandexMapsModule, YaConfig } from 'angular8-yandex-maps';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { RegisterComponent } from './comp/register/register.component';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
-import { AddCardComponent } from './comp/add-card/add-card.component';
-import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzBackTopModule } from 'ng-zorro-antd/back-top';
+import { UserInfoComponent } from './comp/user-info/user-info.component';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
-
+import { AddCardComponent } from './comp/add-card/add-card.component';
 
 
 registerLocaleData(ru);
+
+const mapConfig: YaConfig = {
+  apikey: '81dcd694-7601-4387-bd05-996e3e78db3d',
+  lang: 'ru_RU'
+  // coordorder: 'longlat',
+};
 
 @NgModule({
   declarations: [
@@ -46,6 +62,7 @@ registerLocaleData(ru);
     LoginComponent,
     CardComponent,
     RegisterComponent,
+    UserInfoComponent,
     AddCardComponent
   ],
   imports: [
@@ -66,8 +83,20 @@ registerLocaleData(ru);
     NzMenuModule,
     NzInputModule,
     NzIconModule,
+    NzSelectModule,
+    NzCarouselModule,
+    NzBreadCrumbModule,
+    NzAvatarModule,
+    AngularYandexMapsModule,
+    NzStepsModule,
     NzFormModule,
     NzAlertModule,
+    NzBackTopModule,
+    NzPaginationModule,
+    NzCheckboxModule,
+    NzCollapseModule,
+    NzSliderModule,
+    NzInputNumberModule,
     NzSelectModule,
     NzInputNumberModule
   ],
