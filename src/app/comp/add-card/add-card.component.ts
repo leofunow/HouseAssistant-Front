@@ -44,48 +44,48 @@ export class AddCardComponent implements OnInit {
 
   stages: Stage[] = [
     {
-      "stage_id": 0,
-      "documents": [],
-      "photos": [],
-      "name": "Новый Этап",
-      "desc": "",
-      "limit_date": new Date(),
-      "current_date": new Date(),
-      "status": "error",
-      "responsibles": ""
+      stage_id: 0,
+      documents: [],
+      photos: [],
+      name: "Новый Этап",
+      desc: "",
+      limit_date: new Date(),
+      current_date: new Date(),
+      status: "error",
+      responsibles: ""
     },
     {
-      "stage_id": 1,
-      "documents": [],
-      "photos": [],
-      "name": "Новый Этап",
-      "desc": "",
-      "limit_date": new Date(),
-      "current_date": new Date(),
-      "status": "process",
-      "responsibles": ""
+      stage_id: 1,
+      documents: [],
+      photos: [],
+      name: "Новый Этап",
+      desc: "",
+      limit_date: new Date(),
+      current_date: new Date(),
+      status: "process",
+      responsibles: ""
     },
     {
-      "stage_id": 2,
-      "documents": [],
-      "photos": [],
-      "name": "Новый Этап",
-      "desc": "",
-      "limit_date": new Date(),
-      "current_date": new Date(),
-      "status": "wait",
-      "responsibles": ""
+      stage_id: 2,
+      documents: [],
+      photos: [],
+      name: "Новый Этап",
+      desc: "",
+      limit_date: new Date(),
+      current_date: new Date(),
+      status: "wait",
+      responsibles: ""
     },
     {
-      "stage_id": 3,
-      "documents": [],
-      "photos": [],
-      "name": "Новый Этап",
-      "desc": "",
-      "limit_date": new Date(),
-      "current_date": new Date(),
-      "status": "finish",
-      "responsibles": ""
+      stage_id: 3,
+      documents: [],
+      photos: [],
+      name: "Новый Этап",
+      desc: "",
+      limit_date: new Date(),
+      current_date: new Date(),
+      status: "finish",
+      responsibles: ""
     }
     
   ];
