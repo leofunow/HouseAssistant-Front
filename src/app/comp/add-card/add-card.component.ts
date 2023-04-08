@@ -1,10 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+
+const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
 
 @Component({
   selector: 'app-add-card',
   templateUrl: './add-card.component.html',
   styleUrls: ['./add-card.component.scss']
 })
+
+
+
 export class AddCardComponent implements OnInit {
   listOfFields: string[] = [];
   listOfSelectedFields = ['ЮЗАО', 'ЮВАО','СЗАО'];
@@ -17,6 +31,21 @@ export class AddCardComponent implements OnInit {
   listOfStatus: string[] = [];
   listOfSelectedStatus = ['Заморожен', 'В процессе','Отменен', 'В планах'];
   space = 0;
+  fileList: NzUploadFile[] = [];
+  previewImage: string | undefined = '';
+  previewVisible = false;
+
+  constructor(private msg: NzMessageService) {}
+
+  handlePreview = async (file: NzUploadFile): Promise<void> => {
+    if (!file.url && !file['preview']) {
+      file['preview'] = await getBase64(file.originFileObj!);
+    }
+    this.previewImage = file.url || file['preview'];
+    this.previewVisible = true;
+  };
+
+  
 
   ngOnInit(): void {
     const children1: string[] = [];
@@ -45,4 +74,18 @@ export class AddCardComponent implements OnInit {
     this.listOfResponsibles = children4;
     this.listOfStatus = children5;
   }
+
+  handleChange({ file, fileList }: NzUploadChangeParam): void {
+    const status = file.status;
+    if (status !== 'uploading') {
+      console.log(file, fileList);
+    }
+    if (status === 'done') {
+      this.msg.success(`${file.name} file uploaded successfully.`);
+    } else if (status === 'error') {
+      this.msg.error(`${file.name} file upload failed.`);
+    }
+  }
+
+  
 }

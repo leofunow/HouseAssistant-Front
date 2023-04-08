@@ -2,16 +2,16 @@
     <img src="assets/icons/logo.svg" class="logo-img">
 </div>
 <div style="overflow-x: hidden; max-width:100vw">
-  <h2 nz-typography style="text-align: center;margin-bottom: 16px; margin-top: 32px;">Авторизация</h2>
+  <h2 nz-typography style="text-align: center;margin-bottom: 32px; margin-top: 32px;">Авторизация</h2>
 <div class="main-card">
   
-    <nz-card class="admin-card">
+    <div class="admin-card">
       
       <form
         nz-form
        
       >
-        <nz-form-item>
+        <!-- <nz-form-item >
           <nz-form-label nzRequired [nzSm]="7" [nzXs]="24">
             <span>Логин</span>
           </nz-form-label>
@@ -25,6 +25,20 @@
           </nz-form-label>
           <nz-form-control nzErrorTip="Пожалуйста введите пароль">
             <input type="password" nz-input id="password"  />
+          </nz-form-control>
+        </nz-form-item> -->
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your username!">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input id="login" placeholder="E-mail" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock">
+              <input type="password" nz-input id="password" placeholder="Пароль" />
+            </nz-input-group>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item style="margin-bottom: 0;">
@@ -41,6 +55,41 @@
         </nz-form-item>
         Нет аккаунта? <a routerLink="/register">Зарегистрироваться</a>
       </form>
-    </nz-card>
+    </div>
   </div>
+</div>
+
+
+<div class="main-card" style="display: none;" >
+  <div style="margin: 0 auto">
+<form nz-form class="login-form">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your username!">
+      <nz-input-group nzPrefixIcon="user">
+        <input type="text" nz-input  placeholder="Username" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-input-group nzPrefixIcon="lock">
+        <input type="password" nz-input  placeholder="Password" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <div nz-row class="login-form-margin">
+    <div nz-col [nzSpan]="12">
+      <label nz-checkbox >
+        <span>Remember me</span>
+      </label>
+    </div>
+    <div nz-col [nzSpan]="12">
+      <a class="login-form-forgot">Forgot password</a>
+    </div>
+  </div>
+  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+  Or
+  <a>register now!</a>
+</form>
+</div>
 </div>

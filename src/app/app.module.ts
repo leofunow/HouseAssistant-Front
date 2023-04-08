@@ -43,6 +43,9 @@ import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { AddCardComponent } from './comp/add-card/add-card.component';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 
 registerLocaleData(ru);
@@ -98,7 +101,10 @@ const mapConfig: YaConfig = {
     NzSliderModule,
     NzInputNumberModule,
     NzSelectModule,
-    NzInputNumberModule
+    NzInputNumberModule,
+    NzUploadModule,
+    NzModalModule,
+    NzImageModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }
