@@ -38,7 +38,32 @@
             <nz-option *ngFor="let item of ['Дата по возрастанию', 'Дата по убыванию']" [nzLabel]="item" [nzValue]="item"></nz-option>
             <!-- дата и площадь -->
         </nz-select>
+        <br>
+        <br>
+        <h4 nz-typography>Фильтрация</h4>
+            <nz-collapse nzGhost>
+                <nz-collapse-panel nzHeader="Cтатус">
+                    <form class="checkboxes">
+                        <label nz-checkbox>Подтверждено</label>
+                        <label nz-checkbox>В работе</label>
+                        <label nz-checkbox>В архиве</label>
+                    </form>
+                </nz-collapse-panel>
+                <nz-collapse-panel nzHeader="Тип">
+                </nz-collapse-panel>
+                <nz-collapse-panel nzHeader="Округ">
+                </nz-collapse-panel>
+                <nz-collapse-panel nzHeader="Район">
+                </nz-collapse-panel>
+                <nz-collapse-panel nzHeader="Площадь, м&#178;">
+                    <nz-slider nzRange nzMax="10000" [(ngModel)]="area"></nz-slider>
+                    <nz-input-number [(ngModel)]="area[0]"></nz-input-number>
+                    <nz-input-number [(ngModel)]="area[1]"></nz-input-number>
+                </nz-collapse-panel>
+            </nz-collapse> <br>
+            <button nz-button>Применить</button>
     </ng-container>
+    
     <!-- Статус, округ, район, площадь слайдер от до, тип, дате пикер -->
 </nz-drawer>
 

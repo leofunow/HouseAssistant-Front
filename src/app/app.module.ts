@@ -38,6 +38,10 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 import { UserInfoComponent } from './comp/user-info/user-info.component';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
 registerLocaleData(ru);
 
@@ -85,7 +89,11 @@ const mapConfig: YaConfig = {
     NzFormModule,
     NzAlertModule,
     NzBackTopModule,
-    NzPaginationModule
+    NzPaginationModule,
+    NzCheckboxModule,
+    NzCollapseModule,
+    NzSliderModule,
+    NzInputNumberModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

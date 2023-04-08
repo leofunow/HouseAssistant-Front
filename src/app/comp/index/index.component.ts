@@ -10,6 +10,8 @@ export class IndexComponent {
   isFiltersOpened = false
   isSortingOpened = false
 
+  area = [0, 5000];
+
 
   selectCard(id: string) {
     window.location.href = `/card/${id}`

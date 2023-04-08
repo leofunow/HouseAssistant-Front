@@ -6,6 +6,7 @@ import { LoginComponent } from './comp/login/login.component';
 import { RegisterComponent } from './comp/register/register.component';
 import { UserInfoComponent } from './comp/user-info/user-info.component';
 
+
 const routes: Routes = [
   {
     path: "", component: IndexComponent
