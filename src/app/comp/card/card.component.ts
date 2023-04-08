@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { UserHttpService } from 'src/app/services/user-http.service';
 
 
 @Component({
@@ -24,7 +25,9 @@ export class CardComponent implements OnInit {
     this.curStep = event
   }
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private userHttp: UserHttpService) {
+
+    // userHttp.
     this.id = this.route.snapshot.paramMap.get('user_id');
     var sub = http.get('https://geocode-maps.yandex.ru/1.x?geocode='+ 'Москва улица академика анохина 13'
     +'&apikey=81dcd694-7601-4387-bd05-996e3e78db3d&format=json').subscribe(
