@@ -201,7 +201,8 @@
           </nz-form-control>
         </nz-form-item>
       </div>
-      <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="12">
+      <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+        <h2>Фотографии</h2>
       <div class="clearfix">
         <nz-upload
           nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -220,6 +221,7 @@
           [nzContent]="modalContent"
           [nzFooter]="null"
           (nzOnCancel)="previewVisible = false"
+          style="width: 100%"
         >
           <ng-template #modalContent>
             <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
@@ -227,23 +229,182 @@
         </nz-modal>
       </div>
     </div>
-      <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="12">
+      <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12">
+        <h2>Документы</h2>
         <nz-upload
       nzType="drag"
       [nzMultiple]="true"
       nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       (nzChange)="handleChange($event)"
+      style="display: inline-block;width: 100%"
     >
       <p class="ant-upload-drag-icon">
         <span nz-icon nzType="inbox"></span>
       </p>
-      <p class="ant-upload-text">Click or drag file to this area to upload</p>
-      <p class="ant-upload-hint">
-        Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files
-      </p>
+      <p class="ant-upload-text">Нажмите или перетащите сюда нужные документы</p>
         </nz-upload>
       </div>
+      <div nz-col nzXs="24" style="margin-top: 24px;">
+        <div nz-row [nzGutter]="[8,0]">
+        <div nz-col nzXs="24" nzLg="18">
+        <h4 nz-typography style="text-align: left">Этапы:</h4>
+        </div>
+        <div nz-col nzXs="24" nzLg="6" style="display:flex;justify-content: space-between;">
+        <div>
+            <button nz-button nzType="default" nzType="primary" (click)="addStage(selectedStage)">Добавить этап</button>
+        </div>
+        <div>
+            <button nz-button nzType="default" nzDanger (click)="deleteStage(selectedStage)">Удалить этап</button>
+            </div>
+        </div>
+      </div>
+        <nz-steps nzType="navigation" [nzCurrent]="selectedStage" (nzIndexChange)="onStageChange($event)" >
+            <nz-step *ngFor="let a of stages" nzTitle={{a.name}} nzStatus={{a.status}}></nz-step>
+        </nz-steps>
+
+        <div nz-row [nzGutter]="[8,0]" style="margin-top: 24px;">
+        <div nz-col nzXs="24" nzSm="16" nzMd="12" nzLg="11">
+            <nz-form-item>
+              <nz-form-label>
+                <span>Название этапа</span>
+              </nz-form-label>
+              <nz-form-control nzErrorTip="Пожалуйста введите название этапа">
+                <input
+                  nz-input
+                  type="text"
+                  id="stage.name"
+                  placeholder="Введите название этапа"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="7">
+            <nz-form-item>
+              <nz-form-label>
+                <span>Отвественный</span>
+              </nz-form-label>
+              <nz-form-control nzErrorTip="Пожалуйста выберите Отвественного">
+                <nz-select
+                  nzMode="multiple"
+                  [nzMaxTagCount]="1"
+                  [nzMaxMultipleCount]="1"
+                  [nzMaxTagPlaceholder]="tagPlaceHolder5"
+                  nzPlaceHolder="Выберите отвественного"
+                  id="stage.responsibles"
+                  [(ngModel)]="listOfSelectedResponsibles"
+                  nzShowSearch
+                  nzAllowClear
+                >
+                  <ng-template #tagPlaceHolder5 let-selectedList
+                    >and {{ selectedList.length }} more selected</ng-template
+                  >
+                  <nz-option
+                    *ngFor="let item of listOfResponsibles"
+                    [nzLabel]="item"
+                    [nzValue]="item"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="6">
+          <nz-form-item>
+            <nz-form-label>
+              <span>Статус этапа</span>
+            </nz-form-label>
+            <nz-form-control nzErrorTip="Пожалуйста выберите статус этапа">
+              <nz-select
+                nzMode="multiple"
+                [nzMaxTagCount]="1"
+                [nzMaxMultipleCount]="1"
+                [nzMaxTagPlaceholder]="tagPlaceHolder6"
+                nzPlaceHolder="Выберите статус"
+                id="stage.status"
+                [(ngModel)]="listOfSelectedStageStatus"
+                nzShowSearch
+                nzAllowClear
+              >
+                <ng-template #tagPlaceHolder6 let-selectedList
+                  >and {{ selectedList.length }} more selected</ng-template
+                >
+                <nz-option
+                  *ngFor="let item of listOfStageStatus"
+                  [nzLabel]="item"
+                  [nzValue]="item"
+                ></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="8">
+            <nz-form-item>
+              <nz-form-label>
+                <span>Плановая дата окончания этапа</span>
+              </nz-form-label>
+              <nz-form-control nzErrorTip="Пожалуйста введите дату окончания этапа">
+                <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="16">
+            <nz-form-item>
+              <nz-form-label>
+                <span>Описание этапа</span>
+              </nz-form-label>
+              <nz-form-control nzErrorTip="Пожалуйста введите дату окончания этапа">
+                <textarea rows="2" nz-input [(ngModel)]="inputDesc"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+          <h2>Фотографии</h2>
+        <div class="clearfix">
+          <nz-upload
+            nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            nzListType="picture-card"
+            [(nzFileList)]="fileList"
+            [nzShowButton]="fileList.length < 8"
+            [nzPreview]="handlePreview"
+          >   
+            <div>
+              <span nz-icon nzType="plus"></span>
+              <div style="margin-top: 8px">Фото объекта</div>
+            </div>
+          </nz-upload>
+          <nz-modal
+            [nzVisible]="previewVisible"
+            [nzContent]="modalContent"
+            [nzFooter]="null"
+            (nzOnCancel)="previewVisible = false"
+            style="width: 100%"
+          >
+            <ng-template #modalContent>
+              <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+            </ng-template>
+          </nz-modal>
+        </div>
+      </div>
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12">
+          <h2>Документы</h2>
+          <nz-upload
+        nzType="drag"
+        [nzMultiple]="true"
+        nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        (nzChange)="handleChange($event)"
+        style="display: inline-block;width: 100%"
+      >
+        <p class="ant-upload-drag-icon">
+          <span nz-icon nzType="inbox"></span>
+        </p>
+        <p class="ant-upload-text">Нажмите или перетащите сюда нужные документы</p>
+          </nz-upload>
+        </div>
+        
+
+
+
     </div>
+      <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24">
         <nz-form-item style="margin-bottom: 0">
           <nz-form-control
             [nzSm]="{ span: 8, offset: 8 }"
@@ -255,12 +416,16 @@
               nzType="primary"
               nzBlock
               nzSize="large"
-              style="margin-bottom: 8px"
+              style="margin-bottom: 8px; margin-top: 16px"
             >
               Создать
             </button>
           </nz-form-control>
         </nz-form-item>
+      </div>
+      </div>
+      
+    </div>
     </form>
   </nz-card>
 </div>
