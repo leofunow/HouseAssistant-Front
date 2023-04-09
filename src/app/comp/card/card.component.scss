@@ -13,7 +13,6 @@
   text-align: center;
   height: 400px;
   line-height: 400px;
-  background: #364d79;
   color: #fff;
   overflow: hidden;
 }
@@ -28,6 +27,7 @@ nz-tag {
 .user{
     cursor: pointer;
     width: fit-content;
+    margin-bottom: 12px;
 }
 .user-span{
     margin-left: 6px;

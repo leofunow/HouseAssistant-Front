@@ -9,12 +9,24 @@ export interface ObjectInfo {
   field: string;
   district: string;
   address: string;
+  pictures: string[];
   type: string;
-  owner_id: string;
-  factial_user: string[];
-  documents: string[];
+  owner: {
+    _id: string;
+    name: string;
+    picture: string;
+  };
+  fact_us: {
+    _id: string;
+    name: string;
+    picture: string;
+  }[];
+  documents: {
+    name: string;
+    path: string;
+    exts: string;
+  }[];
   desc: string;
-  responsibles: string[];
   status: string;
   area: number;
 }

@@ -10,28 +10,29 @@
     <button nz-button nzType="link">Редактировать</button>
 </div>
 <br>
-<nz-row [nzGutter]="[24,24]">
+<nz-row [nzGutter]="[24,24]" *ngIf="object">
     <div nz-col nzXs="24" nzSm="24" nzMd="16">
         <nz-carousel class="photo-carousel">
-            <div nz-carousel-content *ngFor="let index of [1,2,3]">
-                <h3>{{ index }}</h3>
+            <div nz-carousel-content *ngFor="let pic of object.pictures">
+                <img [src]="pic" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
         </nz-carousel>
     </div>
     <div class="adress-info-wrap" nz-col nzXs="24" nzSm="24" nzMd="8">
-        <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> ул. Академика Анохина, 17</p>
+        <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> {{object.address}}</p>
         <nz-badge nzStatus="processing" nzText="Урегулирование"></nz-badge> <br><br>
-        <nz-tag [nzColor]="'geekblue'">Снос</nz-tag>
-        <nz-tag [nzColor]="'cyan'">1000 м&#178;</nz-tag>
-        <nz-tag [nzColor]="'volcano'">ЮЗАО</nz-tag>
-        <nz-tag [nzColor]="'green'">Тропарево-Никулино</nz-tag> <br> <br>
+        <nz-tag [nzColor]="'geekblue'">{{object.type}}</nz-tag>
+        <nz-tag [nzColor]="'cyan'">{{object.area}} м&#178;</nz-tag>
+        <nz-tag [nzColor]="'volcano'">{{object.field}}</nz-tag>
+        <nz-tag [nzColor]="'green'">{{object.district}}</nz-tag> <br> <br>
         <h4 nz-typography>Владелец:</h4>
-        <div class="user" routerLink="user/0">
-            <nz-avatar nzIcon="user"></nz-avatar> <span class="user-span">Петров Петр Петрович</span>
+        <div class="user" [routerLink]="'user/' + object.owner._id">
+            <nz-avatar [nzSrc]="object.owner.picture && object.owner.picture != '' ? object.owner.picture : undefined"  nzIcon="user"></nz-avatar> <span class="user-span">{{object.owner.name}}</span>
         </div>
-        <br>
         <h4 nz-typography>Ответственные:</h4>
-        <div class="user"><nz-avatar nzIcon="user"></nz-avatar> <span class="user-span">Иванов Иван Иванович</span>
+        <div class="user" *ngFor="let user of object.fact_us" [routerLink]="'user/' + user._id">
+            <nz-avatar [nzSrc]="user.picture && user.picture != '' ? user.picture : undefined" nzIcon="user"></nz-avatar> <span
+                class="user-span">{{user.name}}</span>
         </div>
 
     </div>
@@ -41,7 +42,6 @@
     <div class="map" nz-col nzXs="24" nzSm="24" [nzMd]="{span:16}">
         <ya-map style="height: 300px;" [state]="{'controls':[]}" [center]="coords" [zoom]="12">
             <ya-placemark [geometry]="coords">
-
             </ya-placemark>
         </ya-map>
     </div>
@@ -49,73 +49,49 @@
 
     <div nz-col nzXs="24" nzSm="24" [nzMd]="{span:8}">
         <h4 nz-typography>Документы по объекту:</h4>
-        <div class="document">
+        <div class="document" *ngFor="let document of object.documents">
             <span nz-icon nzType="book" nzTheme="outline"></span>
-            <span class="document-span">Акт приемки</span>
+            <span class="document-span">{{document.name}}</span>
         </div>
-        <div class="document">
-            <span nz-icon nzType="book" nzTheme="outline"></span>
-            <span class="document-span">Акт приемки</span>
-        </div>
-        <div class="document">
-            <span nz-icon nzType="book" nzTheme="outline"></span>
-            <span class="document-span">Акт приемки</span>
-        </div>
-        <div class="document">
-            <span nz-icon nzType="book" nzTheme="outline"></span>
-            <span class="document-span">Акт приемки</span>
-        </div>
+
         <br>
-        <div class="document" routerLink="docs">Посмотреть все документы</div> <br>
+        <div class="document" routerLink="docs" *ngIf="object.documents.length > 4">Посмотреть все документы</div>
+        <div *ngIf="object.documents.length == 0"> По объекту нет документов</div>
+
+        <br>
     </div>
 
     <div nz-col nzXs="24" nzSm="24" [nzMd]="16">
         <h4 nz-typography>Описание:</h4>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime laboriosam aspernatur esse consequatur omnis
-        expedita, pariatur dolores saepe itaque tempore quia impedit molestias deleniti obcaecati optio excepturi unde
-        ipsum dolorum?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime laboriosam aspernatur esse consequatur omnis
-        expedita, pariatur dolores saepe itaque tempore quia impedit molestias deleniti obcaecati optio excepturi unde
-        ipsum dolorum?
+        {{object.desc}}
     </div>
     <div nz-col nzXs="24">
         <h4 nz-typography>Дорожная карта:</h4>
         <nz-steps nzType="navigation" [nzCurrent]="curStep" (nzIndexChange)="onIndexChange($event)">
-            <nz-step nzTitle="Большое название э..." nzStatus="finish"></nz-step>
-            <nz-step nzTitle="Step 2" nzStatus="process"></nz-step>
-            <nz-step nzTitle="Step 3" nzStatus="wait"></nz-step>
-            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
-            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
-            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
-            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
-            <nz-step nzTitle="Step 4" nzStatus="wait"></nz-step>
-            <nz-step nzTitle="Большое название э..." nzStatus="wait"></nz-step>
+            <nz-step [nzTitle]="step.name" [nzStatus]="step.status" *ngFor="let step of object.stages"></nz-step>
+
         </nz-steps>
     </div>
     <div nz-col nzXs="24">
-        <h4 nz-typography><nz-badge nzStatus="processing"></nz-badge>Название этапа</h4>
-        <p>Описание этапа, что сделано, что требуется сделать, что ожидать от этапа и тд
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi dolore perspiciatis dicta voluptatem, esse
-            ducimus totam ullam quam recusandae quis ex officiis blanditiis repellendus exercitationem itaque tempora,
-            accusamus architecto eius?
+        <h4 nz-typography><nz-badge nzStatus="processing"></nz-badge>{{object.stages[curStep].name}}</h4>
+        <p>{{object.stages[curStep].desc}}
         </p>
         <div class="step-dates">
             <span nz-icon nzType="calendar" nzTheme="outline"></span>
-            <span class="step-dates-span">29.04.2023 - 15.06.2023</span>
+            <span class="step-dates-span">{{object.stages[curStep].current_date.toLocaleString('ru').split(',')[0]}} -
+                {{object.stages[curStep].limit_date.toLocaleString('ru').split(',')[0]}}</span>
         </div> <br>
         <h5 nz-typography>Документы по этапу:</h5>
-        <div class="document">
+        <div class="document" *ngFor="let document of object.stages[curStep].documents">
             <span nz-icon nzType="book" nzTheme="outline"></span>
-            <span class="document-span">Акт приемки</span>
+            <span class="document-span">{{document.name}}</span>
         </div>
-        <div class="document">
-            <span nz-icon nzType="video-camera" nzTheme="outline"></span>
-            <span class="document-span">Пример видео</span>
-        </div> <br>
+        <div *ngIf="object.stages[curStep].documents.length == 0"> По объекту нет документов</div>
+        <br>
         <h5 nz-typography>Фотоотчёт:</h5>
         <nz-carousel class="photo-carousel">
-            <div nz-carousel-content *ngFor="let index of [1,2,3]">
-                <!-- <h3>{{ index }}</h3> -->
+            <div nz-carousel-content *ngFor="let pic of object.stages[curStep].photos">
+                <img [src]="pic" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
         </nz-carousel>
     </div>

@@ -57,4 +57,11 @@ export class UserHttpService {
     ))
   }
 
+  getUser(id: string){
+    return firstValueFrom(this.http.get(`http://localhost:3000/api/user/${id}`).pipe(
+      retry(3),
+      catchError(this.errorHandler)
+    ))
+  }
+
 }

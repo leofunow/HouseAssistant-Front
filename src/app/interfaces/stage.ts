@@ -1,6 +1,10 @@
 export interface Stage {
     stage_id: number,
-    documents: [],
+    documents: {
+      name: string,
+      path: string,
+      exts: string
+    }[],
     photos: [],
     name: string,
     desc: string,
