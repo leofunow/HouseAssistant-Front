@@ -7,7 +7,7 @@
     Добавить объект
   </h2>
   <nz-card class="block-card">
-    <form nz-form (ngSubmit)="submitForm()">
+    <form nz-form>
       <div nz-row [nzGutter]="[8, 0]">
         <div nz-col nzXs="24" nzSm="16" nzMd="12" nzLg="8">
           <nz-form-item>
@@ -120,7 +120,7 @@
         <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
           <h2>Фотографии</h2>
           <div class="clearfix">
-            <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" nzListType="picture-card"
+            <nz-upload nzListType="picture-card"
               [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 8" [nzPreview]="handlePreview">
               <div>
                 <span nz-icon nzType="plus"></span>
@@ -137,8 +137,10 @@
         </div>
         <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12">
           <h2>Документы</h2>
-          <nz-upload nzType="drag" [nzMultiple]="true" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-            (nzChange)="handleChange($event)" style="display: inline-block;width: 100%">
+          <nz-upload nzType="drag" [nzMultiple]="true"
+            (nzChange)="handleChange($event)" style="display: inline-block;width: 100%"
+            [(nzFileList)]="fileListFiles"
+            >
             <p class="ant-upload-drag-icon">
               <span nz-icon nzType="inbox"></span>
             </p>
@@ -230,8 +232,8 @@
             <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
               <h2>Фотографии</h2>
               <div class="clearfix">
-                <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" nzListType="picture-card"
-                  [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 8" [nzPreview]="handlePreview">
+                <nz-upload nzListType="picture-card"
+                  [(nzFileList)]="fileListImagesStage[selectedStage]" [nzShowButton]="fileList.length < 8" [nzPreview]="handlePreview">
                   <div>
                     <span nz-icon nzType="plus"></span>
                     <div style="margin-top: 8px">Фото объекта</div>
@@ -247,8 +249,10 @@
             </div>
             <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12">
               <h2>Документы</h2>
-              <nz-upload nzType="drag" [nzMultiple]="true" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                (nzChange)="handleChange($event)" style="display: inline-block;width: 100%">
+              <nz-upload nzType="drag" [nzMultiple]="true"
+                style="display: inline-block;width: 100%"
+                [(nzFileList)]="fileListFilesStage[selectedStage]"
+                >
                 <p class="ant-upload-drag-icon">
                   <span nz-icon nzType="inbox"></span>
                 </p>
@@ -263,8 +267,8 @@
           <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24">
             <nz-form-item style="margin-bottom: 0">
               <nz-form-control [nzSm]="{ span: 8, offset: 8 }" [nzXs]="{ span: 8, offset: 0 }">
-                <button type="submit" nz-button nzType="primary" nzBlock nzSize="large"
-                  style="margin-bottom: 8px; margin-top: 16px">
+                <button type="button" nz-button nzType="primary" nzBlock nzSize="large"
+                  style="margin-bottom: 8px; margin-top: 16px" (click)="submitForm()">
                   Создать
                 </button>
               </nz-form-control>

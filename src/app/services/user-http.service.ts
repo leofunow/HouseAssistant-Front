@@ -57,6 +57,13 @@ export class UserHttpService {
     ))
   }
 
+  addCard(formData: FormData){
+    return firstValueFrom(this.http.post('http://localhost:3000/api/newobject', formData).pipe(
+      retry(3),
+      catchError(this.errorHandler)
+    ))
+  }
+
   getUser(id: string){
     return firstValueFrom(this.http.get(`http://localhost:3000/api/user/${id}`).pipe(
       retry(3),

@@ -4,6 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { Stage } from 'src/app/interfaces/stage';
 import { ObjectInfo } from 'src/app/interfaces/object-info';
+import { UserHttpService } from 'src/app/services/user-http.service';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -31,13 +32,16 @@ export class AddCardComponent implements OnInit {
     'Петр Петрович',
   ];
   listOfSelectedResponsibles = [];
-  listOfSelectedStageResponsibles:string[][] = [];
+  listOfSelectedStageResponsibles: string[][] = [];
   listOfStatus: string[] = ['process', 'wait', 'finish', 'error'];
   listOfSelectedStatus: string[] = [];
   listOfStageStatus: string[] = ['process', 'wait', 'finish', 'error'];
-  listOfSelectedStageStatus:string[][] = [];
+  listOfSelectedStageStatus: string[][] = [];
   space = 0;
   fileList: NzUploadFile[] = [];
+  fileListFiles: NzUploadFile[] = [];
+  fileListFilesStage: NzUploadFile[][] = [[], []];
+  fileListImagesStage: NzUploadFile[][] = [];
   previewImage: string | undefined = '';
   previewVisible = false;
   curStep = 0;
@@ -77,7 +81,7 @@ export class AddCardComponent implements OnInit {
       desc: '',
       limit_date: new Date(),
       current_date: new Date(),
-      status: 'error',
+      status: 'finish',
       responsibles: '',
     },
     {
@@ -93,7 +97,7 @@ export class AddCardComponent implements OnInit {
     },
   ];
 
-  constructor(private msg: NzMessageService) {}
+  constructor(private msg: NzMessageService, private userHttp: UserHttpService) {}
 
   onChange(result: Date): void {
     console.log('onChange: ', result);
@@ -116,10 +120,18 @@ export class AddCardComponent implements OnInit {
       status: '',
       responsibles: '',
     });
+    this.fileListFilesStage.splice(selectedStage + 1, 0, []);
+    this.fileListImagesStage.splice(selectedStage + 1, 0, []);
+    this.listOfSelectedStageStatus.splice(selectedStage + 1, 0, []);
+    this.listOfSelectedStageResponsibles.splice(selectedStage + 1, 0, []);
   }
 
   deleteStage(index: number) {
     this.stages.splice(index, 1);
+    this.fileListFilesStage.splice(index, 1);
+    this.fileListImagesStage.splice(index, 1);
+    this.listOfSelectedStageStatus.splice(index, 1);
+    this.listOfSelectedStageResponsibles.splice(index, 1);
   }
 
   handlePreview = async (file: NzUploadFile): Promise<void> => {
@@ -145,18 +157,55 @@ export class AddCardComponent implements OnInit {
     this.cardInput.stages = this.stages.map((item, index) => {
       return {
         ...item,
-        responsibles: this.listOfSelectedStageResponsibles[index] == undefined ? "" : this.listOfSelectedStageResponsibles[index][0],
-        status: this.listOfSelectedStageStatus[index] == undefined ? "" : this.listOfSelectedStageStatus[index][0],
-      }
+        responsibles:
+          this.listOfSelectedStageResponsibles[index] == undefined
+            ? ''
+            : this.listOfSelectedStageResponsibles[index][0],
+        status:
+          this.listOfSelectedStageStatus[index] == undefined
+            ? ''
+            : this.listOfSelectedStageStatus[index][0],
+      };
     });
     this.cardInput.area = this.space;
     this.cardInput.fact_us = this.listOfSelectedResponsibles.map((item) => {
       return { _id: '', name: item, picture: '' };
     });
 
-    console.log(this.selectedStage);
-
     console.log(this.cardInput);
+    var formData = new FormData();
+    for (let pic of this.fileList.map((item) => item.originFileObj))
+      if (pic) formData.append('pics', pic);
+
+    for (let pic of this.fileListFiles.map((item) => item.originFileObj))
+      if (pic) formData.append('files', pic);
+    for (let pics of this.fileListFilesStage.map((item) =>
+      item.map((item) => item.originFileObj)
+    ))
+      if (pics)
+        for (let pic of pics) if (pic) formData.append('filesStage', pic);
+    for (let pics of this.fileListImagesStage.map((item) =>
+      item.map((item) => item.originFileObj)
+    ))
+      if (pics)
+        for (let pic of pics) if (pic) formData.append('imagesStage', pic);
+    formData.append('card', JSON.stringify(this.cardInput));
+    let  imagesInfo = {
+      images: this.fileListImagesStage.map((item) => item.map((item) => item.originFileObj)).length,
+      files: this.fileListFilesStage.map((item) => item.map((item) => item.originFileObj)).length,
+      stagesFiles: this.fileListFilesStage.map((item) => item.map((item) => item.originFileObj).length),
+      stagesImages: this.fileListImagesStage.map((item) => item.map((item) => item.originFileObj).length),
+    }
+    console.log(imagesInfo);
+    
+    console.log(formData);
+
+    this.userHttp.addCard(formData).then((res) => {
+      this.msg.success('Карточка добавлена');
+      console.log(res);
+      
+    })
+
   }
 
   handleChange({ file, fileList }: NzUploadChangeParam): void {
