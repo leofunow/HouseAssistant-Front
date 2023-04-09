@@ -52,6 +52,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { MeetingsComponent } from './add-comp/meetings/meetings.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 
 registerLocaleData(ru);
@@ -75,7 +77,8 @@ const mapConfig: YaConfig = {
     AddCardComponent,
     DocsComponent,
     ProfileComponent,
-    CardsComponent
+    CardsComponent,
+    MeetingsComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +118,8 @@ const mapConfig: YaConfig = {
     NzModalModule,
     NzImageModule,
     NzMessageModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzTableModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

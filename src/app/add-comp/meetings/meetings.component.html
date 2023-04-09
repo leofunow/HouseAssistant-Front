@@ -1,0 +1,53 @@
+<div class="meetings-wrap">
+    <h3 nz-typography>Мои совещания</h3>
+    
+    <nz-table #nzTable [nzData]="meetingInfo" nzTableLayout="fixed">
+        <thead>
+            <tr>
+                <th nzWidth="60px"></th>
+                <th>Название</th>
+                <th>Дата</th>
+                <th>Статус</th>
+                <th>Решение</th>
+                <!-- <th>Address</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let data of nzTable.data">
+                <tr>
+                    <td [nzExpand]="expandSet.has(data._id)" (nzExpandChange)="onExpandChange(data._id, $event)"></td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.Date.toLocaleString() }}</td>
+                    <td>{{ data.status }}</td>
+                    <td>{{ data.result }}</td>
+                    <!-- <td>{{ data.address }}</td> -->
+                </tr>
+                <tr [nzExpand]="expandSet.has(data._id)">
+                    <h4 nz-typography>Объекты на совещании</h4>
+                    <div nz-row [nzGutter]="[16,16]">
+                        <div nz-col *ngFor="let obj of data.objects">
+                            <nz-card nzHoverable [nzCover]="coverTemplate" [routerLink]="'/card/' + obj._id">
+                                <div class="card-content">
+                                    <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> {{obj.address}}
+                                    </p>
+                                    <nz-badge nzStatus="processing" [nzText]="obj.status"></nz-badge> <br><br>
+                                    <nz-tag [nzColor]="'geekblue'">{{obj.type}}</nz-tag>
+                                    <nz-tag [nzColor]="'cyan'">{{obj.area}} м&#178;</nz-tag>
+                                    <nz-tag [nzColor]="'volcano'">{{obj.field}}</nz-tag>
+                                </div>
+                            </nz-card>
+                            <ng-template #coverTemplate>
+                                <img [src]="obj.pictures[0]" />
+                            </ng-template>
+                        </div>
+                    </div> <br>
+                    <h4 nz-typography>Участники</h4>
+                    <div class="user" *ngFor="let user of data.users" [routerLink]="'/user/' + user._id">
+                        <nz-avatar [nzSrc]="user.picture && user.picture != '' ? user.picture : undefined" nzIcon="user"></nz-avatar> <span
+                            class="user-span">{{user.name}}</span>
+                    </div>
+                </tr>
+            </ng-container>
+        </tbody>
+    </nz-table>
+</div>

@@ -26,7 +26,7 @@
         <nz-tag [nzColor]="'volcano'">{{object.field}}</nz-tag>
         <nz-tag [nzColor]="'green'">{{object.district}}</nz-tag> <br> <br>
         <h4 nz-typography>Владелец:</h4>
-        <div class="user" [routerLink]="'user/' + object.owner._id">
+        <div class="user" *ngIf="object.owner" [routerLink]="'user/' + object.owner._id">
             <nz-avatar [nzSrc]="object.owner.picture && object.owner.picture != '' ? object.owner.picture : undefined"  nzIcon="user"></nz-avatar> <span class="user-span">{{object.owner.name}}</span>
         </div>
         <h4 nz-typography>Ответственные:</h4>

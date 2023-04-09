@@ -8,17 +8,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProfileComponent {
 
-  selectedMenu: 'profile' | 'addCard' | 'cards' = 'profile';
+  selectedMenu: 'profile' | 'addCard' | 'cards' | 'meetings' = 'profile';
 
   constructor(private route: ActivatedRoute, private router: Router) {
     
-    route.params.subscribe(params => {
+
+    route.queryParams.subscribe(params => {
       if( params['menu'])
       this.selectedMenu = params['menu'];
     })
   }
 
-  selectMenu(menu: 'profile' | 'addCard' | 'cards') {
+  selectMenu(menu: 'profile' | 'addCard' | 'cards' | 'meetings') {
     this.selectedMenu = menu
     this.router.navigate(
       ['.'],

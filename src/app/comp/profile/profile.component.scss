@@ -18,10 +18,11 @@
     padding: 32px;
     max-width: 1200px;
     min-width: 350px;
+    // overflow: auto
 }
 
 nz-content{
     display: flex;
     justify-content: center;
-    overflow: scroll;
+    overflow: auto;
 }

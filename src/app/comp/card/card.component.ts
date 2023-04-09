@@ -37,6 +37,7 @@ export class CardComponent implements OnInit {
 
     if (this.id)
       userHttp.getObject(this.id).then((data: any) => {
+        console.log(data);
         
         this.object = {
           ...data.object,

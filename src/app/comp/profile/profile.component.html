@@ -10,6 +10,11 @@
 
                 <span>Мои объекты</span>
             </li>
+            <li nz-menu-item [nzSelected]="selectedMenu=='meetings'" (click)="selectMenu('meetings')">
+                <span nz-icon nzType="unordered-list" nzTheme="outline"></span>
+
+                <span>Мои совещания</span>
+            </li>
             <li nz-menu-item [nzSelected]="selectedMenu=='addCard'" (click)="selectMenu('addCard')">
                 <span nz-icon nzType="plus"></span>
                 <span>Добавить объект</span>
@@ -20,6 +25,9 @@
         <div class="content-wrap">
             <app-user-info id="0" [isLk]="true" *ngIf="selectedMenu == 'profile'"></app-user-info>
             <app-cards id="1" *ngIf="selectedMenu == 'cards'"></app-cards>
+            <app-meetings *ngIf="selectedMenu == 'meetings'" style="min-width: 600px;"></app-meetings>
+            <app-add-card *ngIf="selectedMenu == 'addCard'"></app-add-card>
         </div>
+
     </nz-content>
 </nz-layout>
