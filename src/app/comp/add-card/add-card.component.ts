@@ -196,6 +196,7 @@ export class AddCardComponent implements OnInit {
       stagesFiles: this.fileListFilesStage.map((item) => item.map((item) => item.originFileObj).length),
       stagesImages: this.fileListImagesStage.map((item) => item.map((item) => item.originFileObj).length),
     }
+    formData.append('imagesInfo', JSON.stringify(imagesInfo));
     console.log(imagesInfo);
     
     console.log(formData);
