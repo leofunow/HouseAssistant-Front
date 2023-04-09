@@ -27,12 +27,13 @@
         <nz-tag [nzColor]="'green'">{{object.district}}</nz-tag> <br> <br>
         <h4 nz-typography>Владелец:</h4>
         <div class="user" *ngIf="object.owner" [routerLink]="'user/' + object.owner._id">
-            <nz-avatar [nzSrc]="object.owner.picture && object.owner.picture != '' ? object.owner.picture : undefined"  nzIcon="user"></nz-avatar> <span class="user-span">{{object.owner.name}}</span>
+            <nz-avatar [nzSrc]="object.owner.picture && object.owner.picture != '' ? object.owner.picture : undefined"
+                nzIcon="user"></nz-avatar> <span class="user-span">{{object.owner.name}}</span>
         </div>
         <h4 nz-typography>Ответственные:</h4>
         <div class="user" *ngFor="let user of object.fact_us" [routerLink]="'user/' + user._id">
-            <nz-avatar [nzSrc]="user.picture && user.picture != '' ? user.picture : undefined" nzIcon="user"></nz-avatar> <span
-                class="user-span">{{user.name}}</span>
+            <nz-avatar [nzSrc]="user.picture && user.picture != '' ? user.picture : undefined"
+                nzIcon="user"></nz-avatar> <span class="user-span">{{user.name}}</span>
         </div>
 
     </div>
@@ -49,10 +50,13 @@
 
     <div nz-col nzXs="24" nzSm="24" [nzMd]="{span:8}">
         <h4 nz-typography>Документы по объекту:</h4>
-        <div class="document" *ngFor="let document of object.documents">
-            <span nz-icon nzType="book" nzTheme="outline"></span>
-            <span class="document-span">{{document.name}}</span>
-        </div>
+        <a [href]="'http://localhost:3000/api/public/download/' + document.path"
+            *ngFor="let document of object.documents" [download]="document.name + document.exts">
+            <div class="document">
+                <span nz-icon nzType="book" nzTheme="outline"></span>
+                <span class="document-span">{{document.name}}</span>
+            </div>
+        </a>
 
         <br>
         <div class="document" routerLink="docs" *ngIf="object.documents.length > 4">Посмотреть все документы</div>
@@ -82,10 +86,13 @@
                 {{object.stages[curStep].limit_date.toLocaleString('ru').split(',')[0]}}</span>
         </div> <br>
         <h5 nz-typography>Документы по этапу:</h5>
-        <div class="document" *ngFor="let document of object.stages[curStep].documents">
-            <span nz-icon nzType="book" nzTheme="outline"></span>
-            <span class="document-span">{{document.name}}</span>
-        </div>
+        <a [href]="'http://localhost:3000/api/public/download/' + document.path"
+            *ngFor="let document of object.stages[curStep].documents" [attr.download]="document.name + document.exts">
+            <div class="document">
+                <span nz-icon nzType="book" nzTheme="outline"></span>
+                <span class="document-span">{{document.name}}</span>
+            </div>
+        </a>
         <div *ngIf="object.stages[curStep].documents.length == 0"> По объекту нет документов</div>
         <br>
         <h5 nz-typography>Фотоотчёт:</h5>

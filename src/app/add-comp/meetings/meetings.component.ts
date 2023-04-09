@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ObjectShortInfo } from 'src/app/interfaces/object-short-info';
 
 @Component({
@@ -106,6 +107,15 @@ export class MeetingsComponent {
     ]
   },
 ]
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  addMeeting(){
+    this.router.navigate(
+      ['.'],
+      {relativeTo: this.route, queryParams: {menu: 'addMeeting'}}
+    )
+  }
 
   onExpandChange(id: string, checked: boolean): void {
     if (checked) {

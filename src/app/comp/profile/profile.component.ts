@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProfileComponent {
 
-  selectedMenu: 'profile' | 'addCard' | 'cards' | 'meetings' = 'profile';
+  selectedMenu: 'profile' | 'addCard' | 'cards' | 'meetings' | 'addMeeting' = 'profile';
 
   constructor(private route: ActivatedRoute, private router: Router) {
     
@@ -19,7 +19,7 @@ export class ProfileComponent {
     })
   }
 
-  selectMenu(menu: 'profile' | 'addCard' | 'cards' | 'meetings') {
+  selectMenu(menu: 'profile' | 'addCard' | 'cards' | 'meetings' | 'addMeeting') {
     this.selectedMenu = menu
     this.router.navigate(
       ['.'],

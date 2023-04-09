@@ -11,7 +11,8 @@
 
 <div class="cards-wrap" nz-row [nzGutter]="[16,16]">
     <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="6" *ngFor="let obj of objects">
-        <nz-card nzHoverable [nzCover]="coverTemplate" [routerLink]="'/card/' + obj._id">
+        <nz-card class="obj-card" nzHoverable [nzCover]="coverTemplate" [nzBodyStyle]="{display:'flex'}"
+            [routerLink]="'/card/' + obj._id">
             <div class="card-content">
                 <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> {{obj.address}}</p>
                 <nz-badge nzStatus="processing" [nzText]="obj.status"></nz-badge> <br><br>
@@ -22,7 +23,7 @@
         </nz-card>
         <!-- templates for card -->
         <ng-template #coverTemplate>
-            <img [src]="obj.pictures[0]" />
+            <img [src]="obj.pictures[0]" style="height: 200px; object-fit: contain;" />
         </ng-template>
     </div>
 </div>
@@ -35,9 +36,10 @@
 
 <nz-drawer [nzVisible]="isFiltersOpened" (nzOnClose)="closeFilters()" nzTitle="Выберите настройки фильтрации">
     <ng-container *nzDrawerContent>
-        <nz-select nzPlaceHolder="Сортировка" class="sort-select">
-            <nz-option *ngFor="let item of ['Дата по возрастанию', 'Дата по убыванию']" [nzLabel]="item"
-                [nzValue]="item"></nz-option>
+        <nz-select nzPlaceHolder="Сортировка" class="sort-select" [(ngModel)]="selectedSort">
+            <nz-option
+                *ngFor="let item of ['Дата создания по возрастанию', 'Дата создания по убыванию', 'Дата последнего изменения по возрастанию', 'Дата последнего изменения по убыванию', 'Площадь по возрастанию', 'Площадь по убыванию']"
+                [nzLabel]="item" [nzValue]="item"></nz-option>
             <!-- дата и площадь -->
         </nz-select>
         <br>
@@ -46,10 +48,8 @@
         <nz-collapse nzGhost *ngIf="filters != undefined">
             <nz-collapse-panel nzHeader="Cтатус">
                 <div class="checkboxes">
-                    <label nz-checkbox
-                        *ngFor="let status of filters.status; let i = index" 
-                        [(ngModel)]="selectedFilters.status[i]"
-                        name="status">{{status}}</label>
+                    <label nz-checkbox *ngFor="let status of filters.status; let i = index"
+                        [(ngModel)]="selectedFilters.status[i]" name="status">{{status}}</label>
                 </div>
             </nz-collapse-panel>
             <nz-collapse-panel nzHeader="Тип">

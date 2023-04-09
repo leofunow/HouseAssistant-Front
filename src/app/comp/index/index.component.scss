@@ -20,6 +20,11 @@
   margin-top: 32px;
 }
 
+.card-content{
+ align-self: center;
+ height: 100%;
+}
+
 .checkboxes {
   display: flex;
   flex-direction: column;
@@ -27,6 +32,9 @@
 .checkboxes > * {
   margin-left: 8px;
   margin-top: 6px;
+}
+.obj-card{
+    height: 100%;
 }
 
 nz-slider ~ nz-input-number {

@@ -26,11 +26,7 @@ export class AddCardComponent implements OnInit {
   listOfSelectedDistricts = [];
   listOfTypes: string[] = ['Снос', 'Реставрация', 'Продажа'];
   listOfSelectedTypes = [];
-  listOfResponsibles: string[] = [
-    'Вася Пупкин',
-    'Иван Иванович',
-    'Петр Петрович',
-  ];
+  listOfResponsibles: string[] = [];
   listOfSelectedResponsibles = [];
   listOfSelectedStageResponsibles: string[][] = [];
   listOfStatus: string[] = ['process', 'wait', 'finish', 'error'];
@@ -97,7 +93,14 @@ export class AddCardComponent implements OnInit {
     },
   ];
 
-  constructor(private msg: NzMessageService, private userHttp: UserHttpService) {}
+  constructor(private msg: NzMessageService, private userHttp: UserHttpService) {
+  }
+
+  changeUser(event: any){
+    this.userHttp.getUserByName(event).then((res: any) => {
+      this.listOfResponsibles = res
+    })
+  }
 
   onChange(result: Date): void {
     console.log('onChange: ', result);

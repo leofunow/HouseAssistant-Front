@@ -12,7 +12,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { ru_RU } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import ru from '@angular/common/locales/ru';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -54,6 +54,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { MeetingsComponent } from './add-comp/meetings/meetings.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { AddMeetingComponent } from './add-comp/add-meeting/add-meeting.component';
 
 
 registerLocaleData(ru);
@@ -78,7 +79,8 @@ const mapConfig: YaConfig = {
     DocsComponent,
     ProfileComponent,
     CardsComponent,
-    MeetingsComponent
+    MeetingsComponent,
+    AddMeetingComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +121,8 @@ const mapConfig: YaConfig = {
     NzImageModule,
     NzMessageModule,
     NzDatePickerModule,
-    NzTableModule
+    NzTableModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

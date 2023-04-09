@@ -1,13 +1,12 @@
 <div class="header">
   <div class="nav">
-    <div class="logo_wrap">
+    <a  [routerLink]="['']" class="logo_wrap">
       <img
         src="assets/icons/logo.svg"
         style="height: 48px; margin-top: auto; margin-bottom: auto"
-        [routerLink]="['']"
       />
       <!--    <img *ngIf="!isLoggedIn" class="phone_image" src="assets/icons/Phone.svg" alt="" style="object-fit: fill; height: 32px; margin-bottom: auto; margin-top: auto; margin-left: 24px">-->
-    </div>
+    </a>
     <div class="input">
       <nz-input-group
         [nzSuffix]="suffixIconSearch"

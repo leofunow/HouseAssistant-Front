@@ -26,7 +26,7 @@ export class UserHttpService {
       'Something bad happened; please try again later.');
   }
 
-  getPage(page?: number, sort?: number, sortDirection?: string[], status?: string[], field?: string[], district?: string[], type?: string[], maxArea?:number, minArea?:number){
+  getPage(page?: number, sort?: string, sortDirection?: number, status?: string[], field?: string[], district?: string[], type?: string[], maxArea?:number, minArea?:number){
     return firstValueFrom(this.http.post('http://localhost:3000/api/page', {
       page: page,
       sort: sort,
@@ -38,6 +38,20 @@ export class UserHttpService {
       maxArea: maxArea,
       minArea: minArea
     }).pipe(
+      retry(3),
+      catchError(this.errorHandler)
+    ))
+  }
+
+  login(email: string, password: string){
+    return firstValueFrom(this.http.post('http://localhost:3000/api/user/login', {email: email, password: password}).pipe(
+      retry(3),
+      catchError(this.errorHandler)
+    ))
+  }
+
+  getUserByName(name: string){
+    return firstValueFrom(this.http.post(`http://localhost:3000/api/findUser`, {name: name}).pipe(
       retry(3),
       catchError(this.errorHandler)
     ))

@@ -95,7 +95,7 @@
             <nz-form-control nzErrorTip="Пожалуйста выберите Отвественных">
               <nz-select nzMode="tags" [nzMaxTagCount]="3" [nzMaxTagPlaceholder]="tagPlaceHolder4"
                 nzPlaceHolder="Выберите отвественных" id="responsibles" [(ngModel)]="listOfSelectedResponsibles"
-                nzShowSearch nzAllowClear name="responsibles">
+                (nzOnSearch)="changeUser($event)" nzShowSearch nzAllowClear name="responsibles">
                 <ng-template #tagPlaceHolder4 let-selectedList>and {{ selectedList.length }} more selected</ng-template>
                 <nz-option *ngFor="let item of listOfResponsibles" [nzLabel]="item" [nzValue]="item"></nz-option>
               </nz-select>
@@ -185,7 +185,7 @@
                 <nz-form-control nzErrorTip="Пожалуйста выберите Отвественного">
                   <nz-select nzMode="tags" [nzMaxTagCount]="1" [nzMaxMultipleCount]="1"
                     [nzMaxTagPlaceholder]="tagPlaceHolder5" nzPlaceHolder="Выберите отвественного"
-                    id="stage.responsibles" [(ngModel)]="listOfSelectedStageResponsibles[selectedStage]" nzShowSearch nzAllowClear name="factus">
+                    id="stage.responsibles" (nzOnSearch)="changeUser($event)" [(ngModel)]="listOfSelectedStageResponsibles[selectedStage]" nzShowSearch nzAllowClear name="factus">
                     <ng-template #tagPlaceHolder5 let-selectedList>and {{ selectedList.length }} more
                       selected</ng-template>
                     <nz-option *ngFor="let item of listOfResponsibles" [nzLabel]="item" [nzValue]="item"></nz-option>

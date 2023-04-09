@@ -1,0 +1,38 @@
+<h3 style="text-align: center;" nz-typography>Добавить совещание</h3> <br>
+<form nz-form [formGroup]="addMeeting" (ngSubmit)="submitForm()" class="add-form">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name">Название</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+            <input nz-input placeholder="Введите имя" formControlName="name" id="name" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="date">Дата</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Введите корректную дату!">
+            <nz-date-picker [nzDisabledTime]="disabledDateTime" nzShowTime nzFormat="yyyy-MM-dd HH:mm"
+                formControlName="date" style="width: 100%;"></nz-date-picker>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="users">Участники</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Введите участников">
+            <nz-select nzMode="tags" nzPlaceHolder="Добавьте участников" formControlName="users" style="width: 100%;">
+                <nz-option *ngFor="let option of listOfUser" [nzValue]="option"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="objects">Объекты</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Введите объекты">
+            <nz-select nzMode="tags" nzPlaceHolder="Добавьте объекты" formControlName="objects" style="width: 100%;">
+                <nz-option *ngFor="let option of listOfUser" [nzValue]="option"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzSm]="{offset: 6}">
+            <button nzType="primary" nz-button type="submit">Добавить</button>
+        </nz-form-control>
+    </nz-form-item>
+
+</form>

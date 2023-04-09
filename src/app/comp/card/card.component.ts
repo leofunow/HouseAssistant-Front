@@ -41,9 +41,21 @@ export class CardComponent implements OnInit {
         
         this.object = {
           ...data.object,
+          pictures: data.object.pictures.map((x: any) => {
+            if(x.search('http') == -1)
+              return "http://localhost:3000/api/public/" + x;
+            else
+              return x
+          }),
           stages: data.object.stages.map((x: any) => {
             return {
               ...x,
+              photos: x.photos.map((y: any) => {
+                if(y.search('http') == -1)
+                  return "http://localhost:3000/api/public/" + y;
+                else
+                  return y
+              }),
               current_date: new Date(x.current_date),
               limit_date: new Date(x.limit_date),
             };
@@ -58,9 +70,9 @@ export class CardComponent implements OnInit {
         var sub = http
           .get(
             'https://geocode-maps.yandex.ru/1.x?geocode=' +
-            this.object.field + ", " +
-            this.object.district + ", " +
-              this.object.address +
+            this.object.address + ", " +
+            this.object.district + " район, " +
+            this.object.field +' округ' +
               '&apikey=81dcd694-7601-4387-bd05-996e3e78db3d&format=json'
           )
           .subscribe((data: any) => {

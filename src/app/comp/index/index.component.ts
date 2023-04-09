@@ -17,15 +17,16 @@ export class IndexComponent {
   selectedPage = 1;
   filters: Filter | undefined;
 
-  YAfilters: Filter = 
-  {
+  YAfilters: Filter = {
     type: [],
     status: [],
     district: [],
     field: [],
     maxArea: 0,
     minArea: 0,
-  }
+  };
+
+  selectedSort = '';
 
   selectedFilters = {
     type: [false],
@@ -66,6 +67,7 @@ export class IndexComponent {
           status.push(filtersToPush.status[i]);
         }
       });
+      console.log(this.selectedSort);
 
       this.reloadPage(
         type.length > 0 ? type : undefined,
@@ -104,11 +106,21 @@ export class IndexComponent {
     maxArea?: number,
     minArea?: number
   ) {
+    var sort = '';
+    var dir = 1;
+    // Парсинг сортировки из 'Дата создания по возрастанию', 'Дата создания по убыванию', 'Дата последнего изменения по возрастанию', 'Дата последнего изменения по убыванию', 'Площадь по возрастанию', 'Площадь по убыванию' в 'lastdate', 'firstdate', 'area'
+    if (this.selectedSort.search('возраст') !== -1 ) dir = 1;
+    else dir = -1;
+    if (this.selectedSort.search('Дата последнего') !== -1 ) sort = 'lastdate';
+    else if (this.selectedSort.search('Дата создания') !== -1) sort = 'firstdate';
+    else if (this.selectedSort.search('Площад') !== -1) sort = 'area';
+    else sort = '';
+    
     this.userHttp
       .getPage(
         this.selectedPage - 1,
-        undefined,
-        undefined,
+        sort == '' ? undefined : sort,
+        sort == '' ? undefined : dir,
         status,
         field,
         district,
@@ -119,6 +131,16 @@ export class IndexComponent {
       .then((data: any) => {
         console.log(data);
         this.objects = data.objects as ObjectShortInfo[];
+        this.objects = this.objects.map((el) => {
+          el.pictures = el.pictures.map((x) => {
+            if (x.search('http') == -1)
+              return 'http://localhost:3000/api/public/' + x;
+            else return x;
+          });
+          return el;
+        });
+        console.log(this.objects);
+
         this.pageNum = data.pages;
       });
   }
