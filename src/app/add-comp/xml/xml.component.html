@@ -4,5 +4,20 @@
     <p class="ant-upload-drag-icon">
         <span nz-icon nzType="inbox"></span>
     </p>
-    <p class="ant-upload-text">Нажмите или перетащите сюда нужные документы</p>
+    <p class="ant-upload-text">Нажмите или перетащите сюда документ</p>
 </nz-upload>
+
+<br><br>
+
+<h3 nz-typography> Выберите файлы для объекта</h3>
+
+<nz-upload nzType="drag" [(nzFileList)]="fileList" [nzMultiple]="false" [nzBeforeUpload]="nullUpload">
+    <p class="ant-upload-drag-icon">
+        <span nz-icon nzType="inbox"></span>
+    </p>
+    <p class="ant-upload-text">Нажмите или перетащите сюда <br> нужные документы</p>
+</nz-upload>
+
+<br>
+
+<button nzType="primary" nz-button (click)="submit()">Отправить</button>

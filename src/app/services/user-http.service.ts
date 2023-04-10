@@ -159,6 +159,18 @@ export class UserHttpService {
     ))
   }
 
+  sendXml(obj: any){
+    return firstValueFrom(this.http.post('http://localhost:3000/api/XML', obj,
+    {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }).pipe(
+      retry(3),
+      catchError(this.errorHandler)
+    ))
+  }
+
   getFilters(){
     return firstValueFrom(this.http.get('http://localhost:3000/api/filter',
     {
