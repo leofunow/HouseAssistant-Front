@@ -15,8 +15,8 @@
               <span>Описание проекта</span>
             </nz-form-label>
             <nz-form-control nzErrorTip="Пожалуйста введите описание проекта">
-              <input nz-input type="text" id="name" placeholder="Введите Описание проекта" [(ngModel)]="cardInput.desc" 
-                name="desc" />
+              <textarea nz-input type="text" id="name" placeholder="Введите Описание проекта" [(ngModel)]="cardInput.desc" 
+                name="desc"></textarea>
             </nz-form-control>
           </nz-form-item>
         </div>
@@ -27,7 +27,7 @@
             </nz-form-label>
             <nz-form-control nzErrorTip="Пожалуйста введите округ">
               <nz-select nzMode="tags" [nzMaxTagCount]="1" [nzMaxMultipleCount]="1"
-                [nzMaxTagPlaceholder]="tagPlaceHolder" nzPlaceHolder="Введите округ" id="Field"
+                [nzMaxTagPlaceholder]="tagPlaceHolder" nzPlaceHolder="Введите округ" id="Field" (nzOnSearch)="changeField($event)"
                 [(ngModel)]="listOfSelectedFields" nzShowSearch nzAllowClear name="Field">
                 <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
                 <nz-option *ngFor="let item of listOfFields" [nzLabel]="item" [nzValue]="item"></nz-option>
@@ -42,7 +42,7 @@
             </nz-form-label>
             <nz-form-control nzErrorTip="Пожалуйста введите район">
               <nz-select nzMode="tags" [nzMaxTagCount]="1" [nzMaxMultipleCount]="1"
-                [nzMaxTagPlaceholder]="tagPlaceHolder2" nzPlaceHolder="Введите район" id="district"
+                [nzMaxTagPlaceholder]="tagPlaceHolder2" nzPlaceHolder="Введите район" id="district" (nzOnSearch)="changeDistrict($event)"
                 [(ngModel)]="listOfSelectedDistricts" nzShowSearch nzAllowClear name="district">
                 <ng-template #tagPlaceHolder2 let-selectedList>and {{ selectedList.length }} more selected</ng-template>
                 <nz-option *ngFor="let item of listOfDistricts" [nzLabel]="item" [nzValue]="item"></nz-option>

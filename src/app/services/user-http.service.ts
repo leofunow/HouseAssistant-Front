@@ -110,8 +110,45 @@ export class UserHttpService {
     ))
   }
 
+  getFieldsByName(name: string){
+    return firstValueFrom(this.http.post('http://localhost:3000/api/findFields', {text: name},
+    {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }).pipe(
+      retry(3),
+      catchError(this.errorHandler)
+    ))
+  }
+
+  getDistrictsByName(name: string){
+    return firstValueFrom(this.http.post('http://localhost:3000/api/findDistrict', {text: name},
+    {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }).pipe(
+      retry(3),
+      catchError(this.errorHandler)
+    ))
+  }
+
   getUserByName(name: string){
     return firstValueFrom(this.http.post(`http://localhost:3000/api/findUser`, {name: name},
+    {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }).pipe(
+      retry(3),
+      catchError(this.errorHandler)
+    ))
+  }
+
+
+  getMyObjects(){
+    return firstValueFrom(this.http.get('http://localhost:3000/api/myObjects',
     {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`

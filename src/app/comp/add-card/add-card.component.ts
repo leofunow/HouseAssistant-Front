@@ -21,9 +21,9 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   styleUrls: ['./add-card.component.scss'],
 })
 export class AddCardComponent implements OnInit {
-  listOfFields: string[] = ['ЮЗАО', 'ЮВАО', 'СЗАО'];
+  listOfFields: string[] = [];
   listOfSelectedFields = [];
-  listOfDistricts: string[] = ['Можайский', 'Кунцевский', 'Тропарево-Никулино'];
+  listOfDistricts: string[] = [];
   listOfSelectedDistricts = [];
   listOfTypes: string[] = ['Снос', 'Реставрация', 'Продажа'];
   listOfSelectedTypes = [];
@@ -100,6 +100,18 @@ export class AddCardComponent implements OnInit {
   changeUser(event: any){
     this.userHttp.getUserByName(event).then((res: any) => {
       this.listOfResponsibles = res
+    })
+  }
+
+  changeField(event: any){
+    this.userHttp.getFieldsByName(event).then((res: any) => {
+      this.listOfFields = res
+    })
+  }
+
+  changeDistrict(event: any){
+    this.userHttp.getDistrictsByName(event).then((res: any) => {
+      this.listOfDistricts = res
     })
   }
 
