@@ -15,8 +15,10 @@
 <br>
 <br>
 <nz-row [nzGutter]="[24,24]" class="user-info-wrap" *ngIf="userInfo">
-    <div nz-col class="avatar-wrap"><nz-avatar [nzSrc]="userInfo.picture && userInfo.picture != '' ? userInfo.picture : undefined" nzIcon="user" [nzSize]="256" nzShape="square"></nz-avatar></div>
-    <div nz-col  nzXs="24" nzMd="12" nzLg="16"> 
+    <div nz-col class="avatar-wrap"><nz-avatar
+            [nzSrc]="userInfo.picture && userInfo.picture != '' ? userInfo.picture : undefined" nzIcon="user"
+            [nzSize]="256" nzShape="square"></nz-avatar></div>
+    <div nz-col nzXs="24" nzMd="12" nzLg="16">
         <h3 nz-typography>{{userInfo.name }}</h3>
         <p>
             {{userInfo.desc }}
@@ -32,10 +34,12 @@
             <span nz-icon nzType="phone" nzTheme="outline"></span>
             <span class="contact-span">8 (800) 555 35 35</span>
         </div> <br> <br>
-        <h4 nz-typography *ngIf="!isLk && userInfo.objects.length" >Проекты пользователя</h4>
+        <h4 nz-typography *ngIf="!isLk && userInfo.objects.length">Проекты пользователя</h4>
+
         <div *ngIf="!isLk && userInfo" class="cards-wrap" nz-row [nzGutter]="[16,16]">
             <div nz-col nzXs="24" nzSm="12" nzMd="8" nzLg="6" *ngFor="let obj of userInfo.objects">
-                <nz-card nzHoverable [nzCover]="coverTemplate" [routerLink]="'/card/' + obj._id">
+                <nz-card class="obj-card" nzHoverable [nzCover]="coverTemplate" [nzBodyStyle]="{display:'flex'}"
+                    [routerLink]="'/card/' + obj._id">
                     <div class="card-content">
                         <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> {{obj.address}}</p>
                         <nz-badge nzStatus="processing" [nzText]="obj.status"></nz-badge> <br><br>
@@ -46,7 +50,7 @@
                 </nz-card>
                 <!-- templates for card -->
                 <ng-template #coverTemplate>
-                    <img [src]="obj.pictures[0]" />
+                    <img [src]="obj.pictures[0]" style="height: 200px; object-fit: contain;" />
                 </ng-template>
             </div>
         </div>

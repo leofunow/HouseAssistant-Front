@@ -16,23 +16,24 @@
     <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="users">Участники</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Введите участников">
-            <nz-select nzMode="tags" nzPlaceHolder="Добавьте участников" formControlName="users" style="width: 100%;">
-                <nz-option *ngFor="let option of listOfUser" [nzValue]="option"></nz-option>
+            <nz-select (nzOnSearch)="searchUser($event)" nzMode="tags" nzPlaceHolder="Добавьте участников" formControlName="users" style="width: 100%;">
+                <nz-option *ngFor="let option of listOfUser" [nzLabel]="option" [nzValue]="option"></nz-option>
             </nz-select>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="objects">Объекты</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Введите объекты">
-            <nz-select nzMode="tags" nzPlaceHolder="Добавьте объекты" formControlName="objects" style="width: 100%;">
-                <nz-option *ngFor="let option of listOfUser" [nzValue]="option"></nz-option>
+            <nz-select (nzOnSearch)="searchObject($event)" nzMode="tags" nzPlaceHolder="Добавьте объекты" formControlName="objects" style="width: 100%;">
+                <nz-option *ngFor="let option of listOfObject" [nzLabel]="option" [nzValue]="option"></nz-option>
             </nz-select>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
         <nz-form-control [nzSm]="{offset: 6}">
+            <h5 class="imp-message">Ответственные за объекты добавляются автоматически</h5>
             <button nzType="primary" nz-button type="submit">Добавить</button>
         </nz-form-control>
     </nz-form-item>
-
+    
 </form>

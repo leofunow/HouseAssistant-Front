@@ -1,120 +1,77 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { ObjectShortInfo } from 'src/app/interfaces/object-short-info';
+import { UserHttpService } from 'src/app/services/user-http.service';
 
 @Component({
   selector: 'app-meetings',
   templateUrl: './meetings.component.html',
-  styleUrls: ['./meetings.component.scss']
+  styleUrls: ['./meetings.component.scss'],
 })
 export class MeetingsComponent {
-
   expandSet = new Set<string>();
 
-  meetingInfo = [{
-    _id: '12',
-    Date: new Date(),
-    objects:[
-      {
-        _id: "1212",
-        pictures: [],
-        field: "string",
-        address: "string",
-        type: "string",
-        status: "string",
-        area: 20,
-      } as ObjectShortInfo,
-      {
-        _id: "56455",
-        pictures: [],
-        field: "string",
-        address: "string",
-        type: "string",
-        status: "string",
-        area: 20,
-      } as ObjectShortInfo,
-    ],
-    users:[
-      {
-        _id: "asdasd",
-          name: "Ванек",
-          desc: "string",
-          email: "string",
-          contacts: ["string"],
-          picture: "https://eanews.ru/uploads/images/2020/september/16/okkupay-pedofilyay-e1381757936342-300x225.jpg",
-      },
-      {
-        _id: "asdasd",
-          name: "string",
-          desc: "string",
-          email: "string",
-          contacts: ["string"],
-          picture: "string",
-      },
-    ],
-    name: 'Название',
-    result: 'Результат',
-    status: 'Завершено',
-    docs: [
-      
-    ]
-  },{
-    _id: '12',
-    Date: new Date(),
-    objects:[
-      {
-        _id: "1212",
-        pictures: [],
-        field: "string",
-        address: "string",
-        type: "string",
-        status: "string",
-        area: 20,
-      } as ObjectShortInfo,
-      {
-        _id: "56455",
-        pictures: [],
-        field: "string",
-        address: "string",
-        type: "string",
-        status: "string",
-        area: 20,
-      } as ObjectShortInfo,
-    ],
-    users:[
-      {
-        _id: "asdasd",
-          name: "Ванек",
-          desc: "string",
-          email: "string",
-          contacts: ["string"],
-          picture: "https://eanews.ru/uploads/images/2020/september/16/okkupay-pedofilyay-e1381757936342-300x225.jpg",
-      },
-      {
-        _id: "asdasd",
-          name: "string",
-          desc: "string",
-          email: "string",
-          contacts: ["string"],
-          picture: "string",
-      },
-    ],
-    name: 'Название',
-    result: 'Результат',
-    status: 'Завершено',
-    docs: [
-      
-    ]
-  },
-]
+  curPage = 1;
+  pages = 1;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  result: string[] = [];
 
-  addMeeting(){
-    this.router.navigate(
-      ['.'],
-      {relativeTo: this.route, queryParams: {menu: 'addMeeting'}}
-    )
+  putResult(id:string, i: number){
+    console.log(this.result[i], id);
+    this.userHttp.setRes(id, this.result[i]).then((res: any) => {
+      this.msg.success('Результат успешно обновлен');
+      // navigate same direction as route
+      this.expandSet.clear()
+      this.reload();
+
+    })
+  }
+
+  meetingInfo: any[] = [];
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private userHttp: UserHttpService,
+    private msg: NzMessageService
+  ) {
+    this.reload()
+  }
+
+  reload() {
+    this.userHttp.getMeetingsPage(this.curPage - 1).then((res: any) => {
+      this.pages = res.pages;
+      let objs = res.meetings.map((obj: any) => {
+        return {
+          _id: obj._doc._id,
+          Date: new Date(obj._doc.date),
+          name: obj._doc.name,
+          result: obj._doc.result,
+          status: obj._doc.status,
+          users: obj.users,
+          objects: obj.objects,
+      }})
+      this.meetingInfo = objs;
+      this.result = this.meetingInfo.map((obj: any) => {
+        return obj.result
+      })
+      console.log(res.meetings[0]._doc);
+      console.log(objs[0]);
+    });
+  }
+
+
+  onChangePage(event: any) {
+    this.curPage = event;
+    this.reload();
+  }
+
+  addMeeting() {
+    this.router.navigate(['.'], {
+      relativeTo: this.route,
+      queryParams: { menu: 'addMeeting' },
+    });
   }
 
   onExpandChange(id: string, checked: boolean): void {

@@ -4,7 +4,7 @@
         <button nz-button (click)="addMeeting()">Добавить</button>
     </div>
     
-    <nz-table #nzTable [nzData]="meetingInfo" nzTableLayout="fixed">
+    <nz-table #nzTable [nzData]="meetingInfo" [nzFrontPagination]="false" [nzTotal]="pages*20" nzTableLayout="fixed" [nzPageSize]="20" (nzPageIndexChange)="onChangePage($event)">
         <thead>
             <tr>
                 <th nzWidth="60px"></th>
@@ -16,20 +16,20 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let data of nzTable.data">
+            <ng-container *ngFor="let data of nzTable.data; let i = index">
                 <tr>
                     <td [nzExpand]="expandSet.has(data._id)" (nzExpandChange)="onExpandChange(data._id, $event)"></td>
                     <td>{{ data.name }}</td>
                     <td>{{ data.Date.toLocaleString() }}</td>
                     <td>{{ data.status }}</td>
-                    <td>{{ data.result }}</td>
+                    <td><p nz-typography nzEllipsis>{{ data.result }}</p></td>
                     <!-- <td>{{ data.address }}</td> -->
                 </tr>
                 <tr [nzExpand]="expandSet.has(data._id)">
                     <h4 nz-typography>Объекты на совещании</h4>
                     <div nz-row [nzGutter]="[16,16]">
                         <div nz-col *ngFor="let obj of data.objects">
-                            <nz-card nzHoverable [nzCover]="coverTemplate" [routerLink]="'/card/' + obj._id">
+                            <nz-card nzHoverable [routerLink]="'/card/' + obj._id">
                                 <div class="card-content">
                                     <p class="address-text" nz-typography><i class="ri-map-pin-line"></i> {{obj.address}}
                                     </p>
@@ -39,9 +39,6 @@
                                     <nz-tag [nzColor]="'volcano'">{{obj.field}}</nz-tag>
                                 </div>
                             </nz-card>
-                            <ng-template #coverTemplate>
-                                <img [src]="obj.pictures[0]" />
-                            </ng-template>
                         </div>
                     </div> <br>
                     <h4 nz-typography>Участники</h4>
@@ -49,6 +46,15 @@
                         <nz-avatar [nzSrc]="user.picture && user.picture != '' ? user.picture : undefined" nzIcon="user"></nz-avatar> <span
                             class="user-span">{{user.name}}</span>
                     </div>
+                    <br>
+                    <form>
+                        <textarea nzAutosize nz-input name="res" id="res" [(ngModel)]="result[i]">
+                            {{data.result}}
+                        </textarea>
+                        <br>
+                        <br>
+                        <button nz-button (click)="putResult(data._id, i)">Добавить решение</button>
+                    </form>
                 </tr>
             </ng-container>
         </tbody>

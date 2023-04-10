@@ -5,6 +5,7 @@ import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { Stage } from 'src/app/interfaces/stage';
 import { ObjectInfo } from 'src/app/interfaces/object-info';
 import { UserHttpService } from 'src/app/services/user-http.service';
+import { Router } from '@angular/router';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -93,7 +94,7 @@ export class AddCardComponent implements OnInit {
     },
   ];
 
-  constructor(private msg: NzMessageService, private userHttp: UserHttpService) {
+  constructor(private msg: NzMessageService, private userHttp: UserHttpService, private router: Router) {
   }
 
   changeUser(event: any){
@@ -206,6 +207,7 @@ export class AddCardComponent implements OnInit {
 
     this.userHttp.addCard(formData).then((res) => {
       this.msg.success('Карточка добавлена');
+      this.router.navigate(['/profile'], {queryParams: {menu: 'cards'}});
       console.log(res);
       
     })

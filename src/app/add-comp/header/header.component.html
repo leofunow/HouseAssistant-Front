@@ -7,17 +7,18 @@
       />
       <!--    <img *ngIf="!isLoggedIn" class="phone_image" src="assets/icons/Phone.svg" alt="" style="object-fit: fill; height: 32px; margin-bottom: auto; margin-top: auto; margin-left: 24px">-->
     </a>
-    <div class="input">
+    <form class="input" (ngSubmit)="submitSearch()">
       <nz-input-group
         [nzSuffix]="suffixIconSearch"
         style="height: 32px; margin-top: 16px"
+
       >
-        <input type="text" nz-input placeholder="Введите название проекта" />
+        <input type="text" nz-input placeholder="Введите адрес объекта"  [(ngModel)]="searchText" name="search"/>
       </nz-input-group>
       <ng-template #suffixIconSearch>
         <span nz-icon nzType="search"></span>
       </ng-template>
-    </div>
+    </form>
     <div class="tabs_wrap">
       <ul
         nz-menu

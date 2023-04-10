@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ObjectShortInfo } from 'src/app/interfaces/object-short-info';
+import { SearchService } from 'src/app/services/search.service';
 import { UserHttpService } from 'src/app/services/user-http.service';
 
 @Component({
@@ -15,7 +16,9 @@ export class IndexComponent {
   isSortingOpened = false;
   pageNum = 1;
   selectedPage = 1;
+  selectedAddress = '';
   filters: Filter | undefined;
+
 
   YAfilters: Filter = {
     type: [],
@@ -88,8 +91,15 @@ export class IndexComponent {
     this.submitFilters();
   }
 
-  constructor(private userHttp: UserHttpService) {
+  constructor(private userHttp: UserHttpService, private searchService: SearchService) {
     this.reloadPage();
+    this.searchService.search.subscribe(
+      (value: string) => {
+        this.selectedAddress = value;
+          this.selectedPage = 1;
+          this.reloadPage()
+      }
+    )
     userHttp.getFilters().then((data: any) => {
       console.log(data);
       this.filters = data as Filter;
@@ -108,6 +118,7 @@ export class IndexComponent {
   ) {
     var sort = '';
     var dir = 1;
+    var search = this.selectedAddress == '' ? undefined : this.selectedAddress;
     // Парсинг сортировки из 'Дата создания по возрастанию', 'Дата создания по убыванию', 'Дата последнего изменения по возрастанию', 'Дата последнего изменения по убыванию', 'Площадь по возрастанию', 'Площадь по убыванию' в 'lastdate', 'firstdate', 'area'
     if (this.selectedSort.search('возраст') !== -1 ) dir = 1;
     else dir = -1;
@@ -126,7 +137,8 @@ export class IndexComponent {
         district,
         type,
         maxArea,
-        minArea
+        minArea,
+        search
       )
       .then((data: any) => {
         console.log(data);
