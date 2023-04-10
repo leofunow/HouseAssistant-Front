@@ -121,7 +121,7 @@
           <h2>Фотографии</h2>
           <div class="clearfix">
             <nz-upload nzListType="picture-card"
-              [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 8" [nzPreview]="handlePreview">
+              [(nzFileList)]="fileList" [nzBeforeUpload]="beforeFileListUpload" [nzShowButton]="fileList.length < 8" [nzPreview]="handlePreview">
               <div>
                 <span nz-icon nzType="plus"></span>
                 <div style="margin-top: 8px">Фото объекта</div>
@@ -139,7 +139,7 @@
           <h2>Документы</h2>
           <nz-upload nzType="drag" [nzMultiple]="true"
             (nzChange)="handleChange($event)" style="display: inline-block;width: 100%"
-            [(nzFileList)]="fileListFiles"
+            [(nzFileList)]="fileListFiles" [nzBeforeUpload]="beforeFileListFilesUpload"
             >
             <p class="ant-upload-drag-icon">
               <span nz-icon nzType="inbox"></span>
@@ -215,7 +215,7 @@
                   <span>Дата окончания этапа</span>
                 </nz-form-label>
                 <nz-form-control nzErrorTip="Пожалуйста введите дату окончания этапа">
-                  <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)" name="datus"></nz-date-picker>
+                  <nz-date-picker [(ngModel)]="this.stages[this.selectedStage].limit_date" name="datus"></nz-date-picker>
                 </nz-form-control>
               </nz-form-item>
             </div>
@@ -233,7 +233,7 @@
               <h2>Фотографии</h2>
               <div class="clearfix">
                 <nz-upload nzListType="picture-card"
-                  [(nzFileList)]="fileListImagesStage[selectedStage]" [nzShowButton]="fileList.length < 8" [nzPreview]="handlePreview">
+                  [(nzFileList)]="fileListImagesStage[selectedStage]" [nzBeforeUpload]="stagePhotoBeforeUpload(selectedStage)" [nzShowButton]="fileList.length < 8" [nzPreview]="handlePreview">
                   <div>
                     <span nz-icon nzType="plus"></span>
                     <div style="margin-top: 8px">Фото объекта</div>
@@ -251,6 +251,7 @@
               <h2>Документы</h2>
               <nz-upload nzType="drag" [nzMultiple]="true"
                 style="display: inline-block;width: 100%"
+                [nzBeforeUpload]="stageBeforeUploadFiles(selectedStage)"
                 [(nzFileList)]="fileListFilesStage[selectedStage]"
                 >
                 <p class="ant-upload-drag-icon">

@@ -19,6 +19,10 @@
                 <span nz-icon nzType="plus"></span>
                 <span>Добавить объект</span>
             </li>
+            <li nz-menu-item [nzSelected]="selectedMenu=='xml'" (click)="selectMenu('xml')">
+                <span nz-icon nzType="plus"></span>
+                <span>Добавить XML</span>
+            </li>
         </ul>
     </nz-sider>
     <nz-content>
@@ -28,6 +32,7 @@
             <app-meetings *ngIf="selectedMenu == 'meetings'" style="min-width: 600px;"></app-meetings>
             <app-add-card *ngIf="selectedMenu == 'addCard'"></app-add-card>
             <app-add-meeting *ngIf="selectedMenu == 'addMeeting'"></app-add-meeting>
+            <app-xml *ngIf="selectedMenu == 'xml'"></app-xml>
         </div>
 
     </nz-content>

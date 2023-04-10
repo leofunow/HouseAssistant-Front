@@ -55,6 +55,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { MeetingsComponent } from './add-comp/meetings/meetings.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { AddMeetingComponent } from './add-comp/add-meeting/add-meeting.component';
+import { XmlComponent } from './add-comp/xml/xml.component';
 
 
 registerLocaleData(ru);
@@ -80,7 +81,8 @@ const mapConfig: YaConfig = {
     ProfileComponent,
     CardsComponent,
     MeetingsComponent,
-    AddMeetingComponent
+    AddMeetingComponent,
+    XmlComponent
   ],
   imports: [
     BrowserModule,

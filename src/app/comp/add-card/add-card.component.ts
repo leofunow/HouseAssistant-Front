@@ -38,7 +38,7 @@ export class AddCardComponent implements OnInit {
   fileList: NzUploadFile[] = [];
   fileListFiles: NzUploadFile[] = [];
   fileListFilesStage: NzUploadFile[][] = [[], []];
-  fileListImagesStage: NzUploadFile[][] = [];
+  fileListImagesStage: NzUploadFile[][] = [[], []];
   previewImage: string | undefined = '';
   previewVisible = false;
   curStep = 0;
@@ -94,25 +94,28 @@ export class AddCardComponent implements OnInit {
     },
   ];
 
-  constructor(private msg: NzMessageService, private userHttp: UserHttpService, private router: Router) {
-  }
+  constructor(
+    private msg: NzMessageService,
+    private userHttp: UserHttpService,
+    private router: Router
+  ) {}
 
-  changeUser(event: any){
+  changeUser(event: any) {
     this.userHttp.getUserByName(event).then((res: any) => {
-      this.listOfResponsibles = res
-    })
+      this.listOfResponsibles = res;
+    });
   }
 
-  changeField(event: any){
+  changeField(event: any) {
     this.userHttp.getFieldsByName(event).then((res: any) => {
-      this.listOfFields = res
-    })
+      this.listOfFields = res;
+    });
   }
 
-  changeDistrict(event: any){
+  changeDistrict(event: any) {
     this.userHttp.getDistrictsByName(event).then((res: any) => {
-      this.listOfDistricts = res
-    })
+      this.listOfDistricts = res;
+    });
   }
 
   onChange(result: Date): void {
@@ -158,6 +161,39 @@ export class AddCardComponent implements OnInit {
     this.previewVisible = true;
   };
 
+  beforeFileListUpload = (
+    file: NzUploadFile,
+    fileList: NzUploadFile[]
+  ): boolean => {
+    this.fileList = this.fileList.concat([file]);
+    return false;
+  };
+  beforeFileListFilesUpload = (
+    file: NzUploadFile,
+    fileList: NzUploadFile[]
+  ): boolean => {
+    this.fileListFiles = this.fileListFiles.concat([file]);
+    return false;
+  };
+
+  stagePhotoBeforeUpload(index: number) {
+    return (file: NzUploadFile, fileList: NzUploadFile[]): boolean => {
+      this.fileListImagesStage[index] = this.fileListImagesStage[index].concat([
+        file,
+      ]);
+      return false;
+    };
+  }
+
+  stageBeforeUploadFiles(index: number) {
+    return (file: NzUploadFile, fileList: NzUploadFile[]): boolean => {
+      this.fileListFilesStage[index] = this.fileListFilesStage[index].concat([
+        file,
+      ]);
+      return false;
+    };
+  }
+
   onIndexChange(event: number) {
     this.curStep = event;
   }
@@ -187,43 +223,53 @@ export class AddCardComponent implements OnInit {
     this.cardInput.fact_us = this.listOfSelectedResponsibles.map((item) => {
       return { _id: '', name: item, picture: '' };
     });
-
+    console.log(this.fileList[0]);
     console.log(this.cardInput);
     var formData = new FormData();
-    for (let pic of this.fileList.map((item) => item.originFileObj))
-      if (pic) formData.append('pics', pic);
+    // for (let pic of this.fileList)
+    //   if (pic) formData.append('pics', pic.originFileObj);
+    this.fileList.forEach((item: any) => {
+      formData.append('pics', item);
+    })
 
-    for (let pic of this.fileListFiles.map((item) => item.originFileObj))
-      if (pic) formData.append('files', pic);
-    for (let pics of this.fileListFilesStage.map((item) =>
-      item.map((item) => item.originFileObj)
-    ))
-      if (pics)
-        for (let pic of pics) if (pic) formData.append('filesStage', pic);
-    for (let pics of this.fileListImagesStage.map((item) =>
-      item.map((item) => item.originFileObj)
-    ))
-      if (pics)
-        for (let pic of pics) if (pic) formData.append('imagesStage', pic);
+    this.fileListFiles.forEach((item: any) => {
+      formData.append('files', item);
+    })
+    this.fileListFilesStage.forEach((item: any) => {
+      item.forEach((item2: any) => {
+        formData.append('filesStage', item2);
+      })
+    })
+    this.fileListImagesStage.forEach((item: any) => {
+      item.forEach((item2: any) => {
+        formData.append('imagesStage', item2);
+      })
+    })
     formData.append('card', JSON.stringify(this.cardInput));
-    let  imagesInfo = {
-      images: this.fileListImagesStage.map((item) => item.map((item) => item.originFileObj)).length,
-      files: this.fileListFilesStage.map((item) => item.map((item) => item.originFileObj)).length,
-      stagesFiles: this.fileListFilesStage.map((item) => item.map((item) => item.originFileObj).length),
-      stagesImages: this.fileListImagesStage.map((item) => item.map((item) => item.originFileObj).length),
-    }
+    let imagesInfo = {
+      images: this.fileListImagesStage.map((item) =>
+        item.map((item) => item.originFileObj)
+      ).length,
+      files: this.fileListFilesStage.map((item) =>
+        item.map((item) => item.originFileObj)
+      ).length,
+      stagesFiles: this.fileListFilesStage.map(
+        (item) => item.map((item) => item.originFileObj).length
+      ),
+      stagesImages: this.fileListImagesStage.map(
+        (item) => item.map((item) => item.originFileObj).length
+      ),
+    };
     formData.append('imagesInfo', JSON.stringify(imagesInfo));
     console.log(imagesInfo);
-    
+
     console.log(formData);
 
     this.userHttp.addCard(formData).then((res) => {
       this.msg.success('Карточка добавлена');
-      this.router.navigate(['/profile'], {queryParams: {menu: 'cards'}});
+      this.router.navigate(['/profile'], { queryParams: { menu: 'cards' } });
       console.log(res);
-      
-    })
-
+    });
   }
 
   handleChange({ file, fileList }: NzUploadChangeParam): void {
