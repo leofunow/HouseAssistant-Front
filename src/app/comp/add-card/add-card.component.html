@@ -163,7 +163,7 @@
             </div>
           </div>
           <nz-steps nzType="navigation" [nzCurrent]="selectedStage" (nzIndexChange)="onStageChange($event)">
-            <nz-step *ngFor="let a of stages" nzTitle={{a.name}} nzStatus={{a.status}}></nz-step>
+            <nz-step *ngFor="let a of stages; let i = index" nzTitle={{a.name}} nzStatus={{listOfSelectedStageStatus[i]}}></nz-step>
           </nz-steps>
 
           <div nz-row [nzGutter]="[8,0]" style="margin-top: 24px;">
@@ -225,7 +225,7 @@
                   <span>Описание этапа</span>
                 </nz-form-label>
                 <nz-form-control nzErrorTip="Пожалуйста введите описание этапа">
-                  <textarea rows="2" nz-input [(ngModel)]="stages[selectedStage].desc" name="datus"></textarea>
+                  <textarea rows="2" nz-input [(ngModel)]="stages[selectedStage].desc" name="textus"></textarea>
                 </nz-form-control>
               </nz-form-item>
             </div>
